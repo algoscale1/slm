@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Search Result</title>
+
+     <link rel="stylesheet" href="{% static 'css/answer_page.css' %}">
+    <script type="text/javascript" src="{% static 'js/jQuery1.11.1.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/answer_page.js' %}"></script>
+</head>
+<body class="m-0">
+    <div class="col-lg-12">
+        <div class="col-lg-12">
+            <div class="header-height black-back">
+                <header>
+                    <h3 class="m-0">DemoProject</h3>
+                </header>
+            </div>
+        </div>
+        <div class="col-lg-12">
+            <form>
+                <br>
+
+                <div class="p-10">
+                    <div class="width70 display-flex m-auto" align="center">
+                        <input type="text" id="searchBar" tabindex="1" placeholder="Enter Your Question Here" autofocus>
+                        <button type="button" class="search-btn" onclick="getAnswer()">Search</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <hr>
+        <div class="col-lg-12 display-flex min-height">
+            <div class="width30" style="background: #f1f1f1">
+                <div class="col-lg-12">
+                    <nav>
+                        <h3 class="mt-0" hidden="true" style="padding-left: 10px;padding-top: 5px">
+                            Searched results are:
+                        </h3>
+                        <ul class="list list-style" id="result_header">
+
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+            <div class="width70">
+                <div>
+                    <div class="col-lg-12">
+                        <nav>
+                            <ul class="list-style m-0" id="answer_space">
+                                    <p class="mt-0"></p>
+
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <footer>Copyright &copy; DemoProject</footer>
+    </div>
+</body>
+</html>
