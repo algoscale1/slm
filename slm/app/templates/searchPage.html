@@ -6,8 +6,7 @@
     <title>Search Result</title>
 
      <link rel="stylesheet" href="{% static 'css/answer_page.css' %}">
-    <script type="text/javascript" src="{% static 'js/jQuery1.11.1.js' %}"></script>
-    <script type="text/javascript" src="{% static 'js/answer_page.js' %}"></script>
+
 </head>
 <body class="m-0">
     <div class="col-lg-12">
@@ -48,8 +47,9 @@
                 <div>
                     <div class="col-lg-12">
                         <nav>
-                            <ul class="list-style m-0" id="answer_space">
-                                    <p class="mt-0"></p>
+                            <ul class="list-style m-0" >
+                                    <p class="mt-0" id="header_space"></p>
+                                    <p class="mt-0" id="answer_space"></p>
 
                             </ul>
                         </nav>
@@ -61,5 +61,8 @@
 
         <footer>Copyright &copy; DemoProject</footer>
     </div>
+ <script type="text/javascript" src="{% static 'js/jQuery1.11.1.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/answer_page.js' %}"></script>
 </body>
+
 </html>

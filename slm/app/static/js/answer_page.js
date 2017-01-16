@@ -36,8 +36,8 @@ function getAnswer() {
 
 // this function is used to show a selected heading to its full answer.
 function showAnswer(header, answer) {
-           console.log("chal gaya");
-           var header_with_answer = header+"\n "+answer;
            var answer_space = $("#answer_space");
-           answer_space.text(header_with_answer)
+           var header_space = $("#header_space");
+           answer_space.text(answer)
+           header_space.text(answer)
 }

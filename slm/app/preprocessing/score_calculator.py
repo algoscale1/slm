@@ -66,7 +66,7 @@ class ScoreData:
        df["score_w2v"] = score1
        df = df.sort_values(by=["score_w2v"], ascending=False)
        df = df.loc[df.score_w2v > 0.4]
-       df = self.tfidf_scoring(df)
+       df = self.tfidf_scoring(df, requested_question)
        df["score"] = df["score_w2v"] + df["score_tfidf"]
        df = df.loc[df.score > 0.5]
        df.drop(['score_w2v', 'score_tfidf'], axis=1, inplace=True)
@@ -75,11 +75,11 @@ class ScoreData:
        # df.to_csv("/home/algo/Desktop/results_ques3.csv")
        return df
 
-    def tfidf_scoring(self,df):
+    def tfidf_scoring(self,df, requested_question):
        # Requested input question from sample dataset
        # requested_question = "Is shareholder consent needed for notice and access?"
        # requested_question = "Does a circular have to say the debt that a director owes to the company?"
-       requested_question = "When does a meeting have to be held?"
+       # requested_question = "When does a meeting have to be held?"
        # requested_question = "Do meeting results have to be disclosed?"
        # requested_question = "What information is required about fees paid to a compensation expert?"
 
@@ -279,11 +279,9 @@ class ScoreData:
         :return: list of words and their synonyms
         """
         # For testing without contextual similarity
-        print(sentences,"sentences")
         sentence_with_synonyms = [words for words in sentences
                                   if words not in self.stopwords]
         sentence_with_synonyms = self.get_synonyms_of_words(sentence_with_synonyms)
-        print(sentence_with_synonyms,"sunonyms")
         return sentence_with_synonyms
 
     def get_synonyms_of_words(self, sentence):
