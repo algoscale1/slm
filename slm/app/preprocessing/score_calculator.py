@@ -23,95 +23,84 @@ class ScoreData:
         self.word2vec_model = None
         self.words = re.compile(r"\w+", re.I)
         try:
-            self.bigrams = Phrases.load('app/cached_models/bigrams.gensim')
+            self.bigrams = Phrases.load('slm/app/cached_models/bigrams.gensim')
         except:
             self.bigrams = None
         try:
-            self.trigrams = Phrases.load('app/cached_models/trigrams.gensim')
+            self.trigrams = Phrases.load('slm/app/cached_models/trigrams.gensim')
         except:
             self.trigrams = None
         try:
-            self.dictionary = corpora.Dictionary.load('app/cached_models/dictionary.dict')
+            self.dictionary = corpora.Dictionary.load('slm/app/cached_models/dictionary.dict')
         except:
             self.dictionary = None
         try:
-            self.tfidf = TfidfModel.load('app/cached_models/tfidf.gensim')
+            self.tfidf = TfidfModel.load('slm/app/cached_models/tfidf.gensim')
         except:
             self.tfidf = None
 
     def init(self):
-        self.word2vec_model = Word2Vec.load('app/cached_models/word2vec_model.gensim')
+        self.word2vec_model = Word2Vec.load('slm/app/cached_models/word2vec_model.gensim')
     #     self.word2vec_model = Word2Vec.load_word2vec_format('app/cached_models/google.bin',binary=True)
 
+    def calculate_score_word2vec(self,df, requested_question):
+       if self.word2vec_model is None:
+           self.init()
+       # Requested input question from sample dataset
+       # requested_question = "Is shareholder consent needed for notice and access?"
+       # requested_question = "Does a circular have to say the debt that a director owes to the company?"
+       # requested_question = "When does a meeting have to be held?"
+       # requested_question = "Do meeting results have to be disclosed?"
+       # requested_question = "What information is required about fees paid to a compensation expert?"
+       req_pos_tags = self.data_parser_pos_tagging(requested_question)
+       # req_synonyms = self.data_parser_synonyms_extract_stopwords_cleaning(req_pos_tags)
+       req_question_vectorized = self.create_avg_sentence_vector(req_pos_tags)
+       score1 = []
+       for i, datapoint in df.iterrows():
+           pos_tags_all = self.data_parser_pos_tagging(datapoint.topic_information)
+           # all_synonyms = self.data_parser_synonyms_extract_stopwords_cleaning(pos_tags_all)
+           data_vectorized1 = self.create_avg_sentence_vector(pos_tags_all)
+           similarity1 = self.get_vec_similarity(data_vectorized1, req_question_vectorized)
+           score1.append(similarity1)
 
-    def calculate_score_word2vec(self,df,requested_question):
-        if self.word2vec_model is None:
-            self.init()
-        # Requested input question from sample dataset
-        # requested_question = "Is shareholder consent needed for notice and access?"
-        # requested_question = "Does a circular have to say the debt that a director owes to the company?"
-        # requested_question = "When does a meeting have to be held?"
-        # requested_question = "Do meeting results have to be disclosed?"
-
-        req_pos_noun_tags = self.data_parser_pos_tagging(requested_question)
-        req_synonyms = self.data_parser_synonyms_extract_stopwords_cleaning(req_pos_noun_tags)
-        req_question_tokenized = self.create_word2vec_tokens(requested_question)
-
-        req_tokens = (list(set(req_synonyms + req_pos_noun_tags)))
-        df_asked_question = pd.DataFrame({"key_terms": req_tokens})
-        req_question_vectorized = self.create_avg_sentence_vector(df_asked_question.key_terms)
-        pos_noun_tags_all = []
-        for i,datapoint in df.iterrows():
-            pos_noun_tags_all.append(self.data_parser_pos_tagging(datapoint.topic_information))
-        all_synonyms = self.data_parser_synonyms_extract_stopwords_cleaning(pos_noun_tags_all)
-        all_tokens = (list(set(all_synonyms + pos_noun_tags_all)))
-        df["pos_nouns"] = all_tokens
-        score1 = []
-        for i, datapoint in df.iterrows():
-            data_tokenized1  = self.create_word2vec_tokens(datapoint.topic_information)
-            data_vectorized1 = self.create_avg_sentence_vector(datapoint.pos_nouns)
-            similarity1 = self.get_vec_similarity(data_vectorized1, req_question_vectorized)
-            score1.append(similarity1)
-
-        df["score_w2v"] = score1
-        df = df.sort_values(by=["score_w2v"], ascending=False)
-        df = df.loc[df.score_w2v > 0.4]
-        df = self.tfidf_scoring(df)
-        df["score"] = df["score_w2v"] + df["score_tfidf"]
-        df = df.loc[df.score > 0.5]
-        df.drop(['score_w2v', 'score_tfidf','pos_nouns'], axis=1, inplace=True)
-        df = df.sort_values(by=["score"], ascending=False)
-        df = df.sort_values(by=["topic"], ascending=False)
-        df.reset_index(inplace=True, drop=True)
-        df.to_csv("results_ques5.csv")
-        return "done"
+       df["score_w2v"] = score1
+       df = df.sort_values(by=["score_w2v"], ascending=False)
+       df = df.loc[df.score_w2v > 0.4]
+       df = self.tfidf_scoring(df)
+       df["score"] = df["score_w2v"] + df["score_tfidf"]
+       df = df.loc[df.score > 0.5]
+       df.drop(['score_w2v', 'score_tfidf'], axis=1, inplace=True)
+       df = df.sort_values(by=["score"], ascending=False)
+       df.reset_index(inplace=True, drop=True)
+       # df.to_csv("/home/algo/Desktop/results_ques3.csv")
+       return df
 
     def tfidf_scoring(self,df):
-        # Requested input question from sample dataset
-        # requested_question = "Is shareholder consent needed for notice and access?"
-        # requested_question = "Does a circular have to say the debt that a director owes to the company?"
-        # requested_question = "When does a meeting have to be held?"
-        # requested_question = "Do meeting results have to be disclosed?"
-        requested_question = "What information is required about fees paid to a compensation expert?"
+       # Requested input question from sample dataset
+       # requested_question = "Is shareholder consent needed for notice and access?"
+       # requested_question = "Does a circular have to say the debt that a director owes to the company?"
+       requested_question = "When does a meeting have to be held?"
+       # requested_question = "Do meeting results have to be disclosed?"
+       # requested_question = "What information is required about fees paid to a compensation expert?"
 
-        req_pos_noun_tags = self.data_parser_pos_tagging(requested_question)
-        req_question_tokenized = [self.create_tokens(requested_question)]
-        req_question_vectorized = self.vectorize(req_question_tokenized)
-        score2 = []
-        for i, datapoint in df.iterrows():
-            data_tokenized2 = [self.create_tokens(datapoint.topic_information)]
-            data_vectorized2 = self.vectorize(data_tokenized2)
-            similarity2 = self.get_vec_similarity(data_vectorized2, req_question_vectorized)
-            score2.append(similarity2)
+       # req_pos_tags = self.data_parser_pos_tagging(requested_question)
+       req_question_tokenized = [self.create_tokens(requested_question)]
+       req_question_vectorized = self.vectorize(req_question_tokenized)
+       score2 = []
+       for i, datapoint in df.iterrows():
+           data_tokenized2 = [self.create_tokens(datapoint.topic_information)]
+           data_vectorized2 = self.vectorize(data_tokenized2)
+           similarity2 = self.get_vec_similarity(data_vectorized2, req_question_vectorized)
+           score2.append(similarity2)
 
-        df["score_tfidf"] = score2
-        df = df.sort_values(by=["score_tfidf"], ascending=False)
-        df = df.loc[df.score_tfidf > 0.00]
-        df = df.sort_values(by=["topic"], ascending=False)
-        df.reset_index(inplace=True, drop=True)
-        dict = {k: g["topic_information"].tolist() for k, g in df.groupby("topic")}
-        # print (dict)
-        return df
+       df["score_tfidf"] = score2
+       df = df.sort_values(by=["score_tfidf"], ascending=False)
+       df = df.loc[df.score_tfidf > 0.00]
+       df = df.sort_values(by=["topic"], ascending=False)
+       df.reset_index(inplace=True, drop=True)
+       # dict = {k: g["topic_information"].tolist() for k, g in df.groupby("topic")}
+       # print (dict)
+       return df
 
 
     def scoring_tree_data(self,cbcr_tree,osact_tree,form1_tree, ni58_tree, notice_tsx_tree, notice_cbc_tree,
@@ -220,7 +209,7 @@ class ScoreData:
         :return:
         """
         if len(sentences) > 0:
-            model_file = "app/cached_models/word2vec_model.gensim"
+            model_file = "slm/app/cached_models/word2vec_model.gensim"
             if os.path.isfile(model_file):
                 model = Word2Vec.load(model_file)
                 try:
@@ -290,10 +279,11 @@ class ScoreData:
         :return: list of words and their synonyms
         """
         # For testing without contextual similarity
-        sentence_with_synonyms = self.get_synonyms_of_words(sentences)
-
-        sentence_with_synonyms = [words for words in sentence_with_synonyms
-                                  if words.lower() not in self.stopwords]
+        print(sentences,"sentences")
+        sentence_with_synonyms = [words for words in sentences
+                                  if words not in self.stopwords]
+        sentence_with_synonyms = self.get_synonyms_of_words(sentence_with_synonyms)
+        print(sentence_with_synonyms,"sunonyms")
         return sentence_with_synonyms
 
     def get_synonyms_of_words(self, sentence):
@@ -306,6 +296,6 @@ class ScoreData:
         word_list_with_synonyms = []
         for word in sentence:
             word_list_with_synonyms.extend([word])
-            for ss in wn.synsets(word.lower()):
+            for ss in wn.synsets(word):
                 word_list_with_synonyms.extend(ss.lemma_names())
         return list(set(word_list_with_synonyms))

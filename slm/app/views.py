@@ -13,34 +13,45 @@ tree = building_tree.BuildTree()
 score = score_calculator.ScoreData()
 
 
-def main_function(self):
+@csrf_exempt
+def get_answers(request):
+    """
+    this function returns answers and linked to url `slm/answers/`
+    :param request: http request which contains the requested question
+    :return: dictionary of answers
+    """
+    requested_question = request.POST['question']
+
     cbcr_tree, osact_tree, form1_tree, ni58_tree, notice_tsx_tree, notice_cbc_tree, ni51_tree, cbcact_tree, \
     ni54_tree, form5_tree, form6_tree, tsx_manual_tree = \
         tree.display_tree(cbcr, osact, form1, ni58, notice_tsx, notice_cbc, ni51, cbcact, ni54, form5, form6,
-                               tsx_manual)
+                          tsx_manual)
 
     complete_data = score.scoring_tree_data(cbcr_tree, osact_tree, form1_tree, ni58_tree, notice_tsx_tree,
-                                                 notice_cbc_tree,
-                                                 ni51_tree, cbcact_tree, ni54_tree, form5_tree, form6_tree,
-                                                 tsx_manual_tree)
+                                            notice_cbc_tree,
+                                            ni51_tree, cbcact_tree, ni54_tree, form5_tree, form6_tree,
+                                            tsx_manual_tree)
 
-    score.calculate_score_word2vec(complete_data)
+    # filtering answers on the basis of scores using word2vec model
+    answers_df = score.calculate_score_word2vec(complete_data, requested_question)
 
-    return HttpResponse("done")
+    # converting df datapoints to a dictionary
+    headings = answers_df.topic.values.tolist()
+    answers = answers_df.topic_information.values.tolist()
+    scores = answers_df.score.values.tolist()
 
+    heading_with_answers = {}
+    for heading, answer in zip(headings, answers):
+        heading_with_answers[heading] = answer
+
+    return HttpResponse(json.dumps(heading_with_answers))
 
 @csrf_exempt
 def home(request):
-    from slm.settings import BASE_DIR,STATICFILES_DIRS
-    print(BASE_DIR)
-    print(STATICFILES_DIRS)
+    """
+    returns home page for quering questions
+    :param request:
+    :return:
+    """
     return render(request, template_name="searchPage.html")
 
-
-@csrf_exempt
-def hey(request):
-    print("post successful")
-    question = request.POST['question']
-    print(question, "question")
-    answers = {"key1": "ans", "key2": "ans2", "key3": "ans3"}
-    return HttpResponse(json.dumps(answers))
