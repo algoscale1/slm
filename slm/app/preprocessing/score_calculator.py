@@ -194,10 +194,10 @@ class ScoreData:
         # d.compactify()
         tfidf = TfidfModel(corpus=bow_corpus, id2word=d)
         try:
-            bigrams.save('app/cached_models/bigrams.gensim')
-            trigrams.save('app/cached_models/trigrams.gensim')
-            d.save('app/cached_models/dictionary.dict')
-            tfidf.save('app/cached_models/tfidf.gensim')
+            bigrams.save('slm/app/cached_models/bigrams.gensim')
+            trigrams.save('slm/app/cached_models/trigrams.gensim')
+            d.save('slm/app/cached_models/dictionary.dict')
+            tfidf.save('slm/app/cached_models/tfidf.gensim')
         except:
             pass
 
