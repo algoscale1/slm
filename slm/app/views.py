@@ -43,7 +43,7 @@ def get_answers(request):
     heading_with_answers = {}
     for heading, answer in zip(headings, answers):
         heading_with_answers[heading] = answer
-
+    # print(heading_with_answers)
     return HttpResponse(json.dumps(heading_with_answers))
 
 @csrf_exempt
