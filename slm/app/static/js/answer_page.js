@@ -39,5 +39,5 @@ function showAnswer(header, answer) {
            var answer_space = $("#answer_space");
            var header_space = $("#header_space");
            answer_space.text(answer)
-           header_space.text(answer)
+           header_space.text(header)
 }
