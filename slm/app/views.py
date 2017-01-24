@@ -43,8 +43,10 @@ def get_answers(request):
     heading_with_answers = {}
     for heading, answer in zip(headings, answers):
         heading_with_answers[heading] = answer
-    # print(heading_with_answers)
-    return HttpResponse(json.dumps(heading_with_answers))
+    if len(heading_with_answers) == 0:
+        return HttpResponse("no results found")
+    else:
+        return HttpResponse(json.dumps(heading_with_answers))
 
 @csrf_exempt
 def home(request):

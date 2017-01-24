@@ -15,9 +15,21 @@ function getAnswer() {
         datatype: "json",
         async: false
     }).done(function (response) {
+        if (response  =="no results found"){
+        jQuery("#search_tag").text("No results found")
+            jQuery("#header_space").attr("hidden","true")
+            jQuery("#answer_space").attr("hidden","true")
 
+
+
+        }
+        else{
         var answers = JSON.parse(response);
+        console.log(answers,"ans");
         var text_area = $("#result_header");
+        jQuery("#search_tag").text("Searched results are:")
+            jQuery("#header_space").text("")
+            jQuery("#answer_space").text("")
 
         // Displaying each heading of the answer
             $.each(answers, function(header, answer) {
@@ -27,6 +39,7 @@ function getAnswer() {
                 text_area.append('<li class="p-5" title="Click Here To read complete Answer"' +
                         ' onclick="showAnswer('+"'"+header+"'"+','+"'"+answer+"'"+')">'+header+'</li>');
             });
+        }
 
 
     })
