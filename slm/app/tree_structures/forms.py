@@ -140,7 +140,7 @@ form5_7_2_3 ="Part 2 Content  Item 7 Election of Directors 7.2  If a proposed di
 "(i) was subject to an order that was issued while the proposed director was acting in the capacity as director, chief executive officer or chief financial officer; or" \
 "(ii) was subject to an order that was issued after the proposed director ceased to be a director, chief executive officer or chief financial officer and which resulted from an event that occurred while that person was acting in the capacity as director, chief executive officer or chief financial officer,state the fact and describe the basis on which the order was made and whether the order is still in effect; or " \
 "(b) is, as at the date of the information circular, or has been within 10 years before the date of the information circular, a director or executive officer of any company (including the company in respect of which the information circular is being prepared) that, while that person was acting in that capacity, or within a year of that person ceasing to act in that capacity, became bankrupt, made a proposal under any legislation relating to bankruptcy or insolvency or was subject to or instituted any proceedings, arrangement or compromise with creditors or had a receiver, receiver manager or trustee appointed to hold its assets, state the fact; or"\
-"(c) has, within the 10 years before the date of the information circular, become bankrupt, made a proposal under any legislation relating to bankruptcy or insolvency, or become subject to or instituted any proceedings, arrangement or compromise with creditors, or had a receiver, receiver manager or trustee appointed to hold the assets of the proposed director, state the fact. 7.2.3 For the purposes of subsection 7.2(a), 'order' means"\
+"(c) has, within the 10 years before the date of the information circular, become bankrupt, made a proposal under any legislation relating to bankruptcy or insolvency, or become subject to or instituted any proceedings, arrangement or compromise with creditors, or had a receiver, receiver manager or trustee appointed to hold the assets of the proposed director, state the fact. 7.2.3 For the purposes of subsection 7.2(a), \"order\" means"\
 "(a) a cease trade order;"\
 "(b) an order similar to a cease trade order; or"\
 "(c) an order that denied the relevant company access to any exemption under securities legislation, that was in effect for a period of more than 30 consecutive days."
@@ -180,19 +180,19 @@ form5_9_4 ="Part 2 Content  Item 9 Securities Authorized for Issuance Under Equi
 
 
 form5_10_1 = "Part 2 Content  Item 10 Indebtedness of Directors and Executive Officers" \
-           "10.1  Aggregate Indebtedness" \
-           "(1) Complete the above table for the aggregate indebtedness outstanding as at a date within thirty days before the date of the information circular entered into in connection with:" \
-           "(a) a purchase of securities; and" \
-           "(b) all other indebtedness." \
-           "(2) Report separately the indebtedness to" \
-           "(a) the company or any of its subsidiaries (column (b)); and" \
-           "(b) another entity if the indebtedness is the subject of a guarantee, support agreement, letter of credit or other similar arrangement or understanding provided by the company or any of its subsidiaries (column (c)), of all executive officers, directors, employees and former executive officers, directors and employees of the company or any of its subsidiaries." \
-           "(3) 'Support agreement' includes, but is not limited to, an agreement to provide assistance in the maintenance or servicing of any indebtedness and an agreement to provide compensation for the purpose of maintaining or servicing any indebtedness of the borrower."\
-"10.2 Indebtedness of Directors and Executive Officers under (1) Securities Purchase and (2) Other Programs" \
-"(1) Complete the above table for each individual who is, or at any time during the most recently completed financial year was, a director or executive officer of the company, each proposed nominee for election as a director of the company, and each associate of any such director, executive officer or proposed nominee," \
-"(a) who is, or at any time since the beginning of the most recently completed financial year of the company has been, indebted to the company or any of its subsidiaries, or" \
-"(b) whose indebtedness to another entity is, or at any time since the beginning of the most recently completed financial year has been, the subject of a guarantee, support agreement, letter of credit or other similar arrangement or understanding provided by the company or any of its subsidiaries, and separately disclose the indebtedness for security purchase programs and all other programs." \
-"(2) Note the following:" \
+           " 10.1  Aggregate Indebtedness" \
+           " (1) Complete the above table for the aggregate indebtedness outstanding as at a date within thirty days before the date of the information circular entered into in connection with:" \
+           " (a) a purchase of securities; and" \
+           " (b) all other indebtedness." \
+           " (2) Report separately the indebtedness to" \
+           " (a) the company or any of its subsidiaries (column (b)); and" \
+           " (b) another entity if the indebtedness is the subject of a guarantee, support agreement, letter of credit or other similar arrangement or understanding provided by the company or any of its subsidiaries (column (c)), of all executive officers, directors, employees and former executive officers, directors and employees of the company or any of its subsidiaries." \
+           " (3) 'Support agreement' includes, but is not limited to, an agreement to provide assistance in the maintenance or servicing of any indebtedness and an agreement to provide compensation for the purpose of maintaining or servicing any indebtedness of the borrower."\
+" 10.2 Indebtedness of Directors and Executive Officers under (1) Securities Purchase and (2) Other Programs" \
+" (1) Complete the above table for each individual who is, or at any time during the most recently completed financial year was, a director or executive officer of the company, each proposed nominee for election as a director of the company, and each associate of any such director, executive officer or proposed nominee," \
+" (a) who is, or at any time since the beginning of the most recently completed financial year of the company has been, indebted to the company or any of its subsidiaries, or" \
+" (b) whose indebtedness to another entity is, or at any time since the beginning of the most recently completed financial year has been, the subject of a guarantee, support agreement, letter of credit or other similar arrangement or understanding provided by the company or any of its subsidiaries, and separately disclose the indebtedness for security purchase programs and all other programs." \
+" (2) Note the following:" \
 "Column (a) - disclose the name and principal position of the borrower.  If the borrower was, during the most recently completed financial year, but no longer is a director or executive officer, state that fact.  If the borrower is a proposed nominee for election as a director, state that fact.  If the borrower is included as an associate, describe briefly the relationship of the borrower to an individual who is or, during the financial year, was a director or executive officer or who is a proposed nominee for election as a director, name that individual and provide the information required by this subparagraph for that individual." \
 "Column (b) - disclose whether the company or a subsidiary of the company is the lender or the provider of a guarantee, support agreement, letter of credit or similar arrangement or understanding." \
 "Column (c) - disclose the largest aggregate amount of the indebtedness outstanding at any time during the most recently completed financial year." \
@@ -200,33 +200,33 @@ form5_10_1 = "Part 2 Content  Item 10 Indebtedness of Directors and Executive Of
 "Column (e) - disclose separately for each class or series of securities, the sum of the number of securities purchased during the most recently completed financial year with the financial assistance (security purchase programs only)." \
 "Column (f) - disclose the security for the indebtedness, if any, provided to the company, any of its subsidiaries or the other entity (security purchase programs only)." \
 "Column (g) - disclose the total amount of indebtedness that was forgiven at any time during the most recently completed financial year." \
-"(3) Supplement the above table with a summary discussion of" \
-"(a) the material terms of each incidence of indebtedness and, if applicable, of each guarantee, support agreement, letter of credit or other similar arrangement or understanding, including" \
-"(i) the nature of the transaction in which the indebtedness was incurred;" \
-"(ii) the rate of interest;" \
-"(iii) the term to maturity;" \
-"(iv) any understanding, agreement or intention to limit recourse; and" \
-"(v) any security for the indebtedness;" \
-"(b) any material adjustment or amendment made during the most recently completed financial year to the terms of the indebtedness and, if applicable, the guarantee, support agreement, letter of credit or similar arrangement or understanding.  Forgiveness of indebtedness reported in column (g) of the above table should be explained; and" \
-"(c) the class or series of the securities purchased with financial assistance or held as security for the indebtedness and, if the class or series of securities is not publicly traded, all material terms of the securities, including the provisions for exchange, conversion, exercise, redemption, retraction and dividends."\
-"10.3  You do not need to disclose information required by this Item" \
-"(a) if you are not sending this information circular in connection with a meeting" \
-"(i) that is an annual general meeting," \
-"(ii) at which the company's directors are to be elected, or" \
-"(iii) at which the company's securityholders will be asked to vote on a matter relating to executive compensation," \
-"(b) for any indebtedness that has been entirely repaid on or before the date of the information circular, or" \
-"(c) for routine indebtedness." \
-"'Routine indebtedness' means indebtedness described in any of the following clauses:" \
-"(i) If the company or its subsidiary makes loans to employees generally," \
-"(A) the loans are made on terms no more favourable than the terms on which loans are made by the company or its subsidiary to employees generally, and" \
-"(B) the amount, at any time during the last completed financial year, remaining unpaid under the loans to the director, executive officer or proposed nominee, together with his or her associates, does not exceed $50,000." \
-"(ii) A loan to a person or company who is a full-time employee of the company," \
-"(A) that is fully secured against the residence of the borrower, and" \
-"(B) the amount of which in total does not exceed the annual salary of the borrower." \
-"(iii)  If the company or its subsidiary makes loans in the ordinary course of business, a loan made to a person or company other than a full-time employee of the company" \
-"(A) on substantially the same terms, including those as to interest rate and security, as are available when a loan is made to other customers of the company or its subsidiary with comparable credit, and" \
-"(B) with no more than the usual risks of collectibility." \
-"(iv) A loan arising by reason of purchases made on usual trade terms or of ordinary travel or expense advances, or for similar reasons, if the repayment arrangements are in accord with usual commercial practice."
+" (3) Supplement the above table with a summary discussion of" \
+" (a) the material terms of each incidence of indebtedness and, if applicable, of each guarantee, support agreement, letter of credit or other similar arrangement or understanding, including" \
+" (i) the nature of the transaction in which the indebtedness was incurred;" \
+" (ii) the rate of interest;" \
+" (iii) the term to maturity;" \
+" (iv) any understanding, agreement or intention to limit recourse; and" \
+" (v) any security for the indebtedness;" \
+" (b) any material adjustment or amendment made during the most recently completed financial year to the terms of the indebtedness and, if applicable, the guarantee, support agreement, letter of credit or similar arrangement or understanding.  Forgiveness of indebtedness reported in column (g) of the above table should be explained; and" \
+" (c) the class or series of the securities purchased with financial assistance or held as security for the indebtedness and, if the class or series of securities is not publicly traded, all material terms of the securities, including the provisions for exchange, conversion, exercise, redemption, retraction and dividends."\
+" 10.3  You do not need to disclose information required by this Item" \
+" (a) if you are not sending this information circular in connection with a meeting" \
+" (i) that is an annual general meeting," \
+" (ii) at which the company's directors are to be elected, or" \
+" (iii) at which the company's securityholders will be asked to vote on a matter relating to executive compensation," \
+" (b) for any indebtedness that has been entirely repaid on or before the date of the information circular, or" \
+" (c) for routine indebtedness." \
+" \"Routine indebtedness\" means indebtedness described in any of the following clauses:" \
+" (i) If the company or its subsidiary makes loans to employees generally," \
+" (A) the loans are made on terms no more favourable than the terms on which loans are made by the company or its subsidiary to employees generally, and" \
+" (B) the amount, at any time during the last completed financial year, remaining unpaid under the loans to the director, executive officer or proposed nominee, together with his or her associates, does not exceed $50,000." \
+" (ii) A loan to a person or company who is a full-time employee of the company," \
+" (A) that is fully secured against the residence of the borrower, and" \
+" (B) the amount of which in total does not exceed the annual salary of the borrower." \
+" (iii)  If the company or its subsidiary makes loans in the ordinary course of business, a loan made to a person or company other than a full-time employee of the company" \
+" (A) on substantially the same terms, including those as to interest rate and security, as are available when a loan is made to other customers of the company or its subsidiary with comparable credit, and" \
+" (B) with no more than the usual risks of collectibility." \
+" (iv) A loan arising by reason of purchases made on usual trade terms or of ordinary travel or expense advances, or for similar reasons, if the repayment arrangements are in accord with usual commercial practice."
 
 form5_11_1 = "Part 2 Content  Item 11 Interest of Informed Persons in Material Transactions Describe briefly and, where practicable, state the approximate amount of any material interest, direct or indirect, of any informed person of the company, any proposed director of the company, or any associate or affiliate of any informed person or proposed director, in any transaction since the commencement of the company's most recently completed financial year or in any proposed transaction which has materially affected or would materially affect the company or any of its subsidiaries."
 form5_11_2 =  "Part 2 Content  Item 11 INSTRUCTIONS:" \
@@ -318,39 +318,39 @@ form6_1_1 = "ITEM 1 - GENERAL PROVISIONS Objective"\
 "The objective of this disclosure is to communicate the compensation the company paid, made payable, awarded, granted, gave or otherwise provided to each NEO and director for the financial year, and the decision - making process relating to compensation. This disclosure will provide insight into executive compensation as a key aspect of the overall stewardship and governance of the company and will help investors understand how decisions about executive compensation are made."\
 "A company's executive compensation disclosure under this form must satisfy this objective and subsections 9.3.1(1) or 11.6(1) of the Instrument."
 
-form6_1_2_1 = "ITEM 1 - GENERAL PROVISIONS Definitions If a term is used in this form but is not defined in this section, refer to subsection 1.1(1) of the Instrument or to National Instrument 14-101 Definitions. In this form,'CEO' means an individual who acted as chief executive officer of the company, or acted in a similar capacity, for any part of the most recently completed financial year;"
+form6_1_2_1 = "ITEM 1 - GENERAL PROVISIONS Definitions If a term is used in this form but is not defined in this section, refer to subsection 1.1(1) of the Instrument or to National Instrument 14-101 Definitions. In this form, \"CEO\" means an individual who acted as chief executive officer of the company, or acted in a similar capacity, for any part of the most recently completed financial year;"
 
-form6_1_2_2 = "ITEM 1 - GENERAL PROVISIONS Definitions If a term is used in this form but is not defined in this section, refer to subsection 1.1(1) of the Instrument or to National Instrument 14-101 Definitions. In this form, 'CFO' means an individual who acted as chief financial officer of the company, or acted in a similar capacity, for any part of the most recently completed financial year;"
+form6_1_2_2 = "ITEM 1 - GENERAL PROVISIONS Definitions If a term is used in this form but is not defined in this section, refer to subsection 1.1(1) of the Instrument or to National Instrument 14-101 Definitions. In this form, \"CFO\" means an individual who acted as chief financial officer of the company, or acted in a similar capacity, for any part of the most recently completed financial year;"
 
-form6_1_2_3 ="ITEM 1 - GENERAL PROVISIONS Definitions If a term is used in this form but is not defined in this section, refer to subsection 1.1(1) of the Instrument or to National Instrument 14-101 Definitions. In this form, 'company' includes other types of business organizations such as partnerships, trusts and other unincorporated business entities;"
+form6_1_2_3 ="ITEM 1 - GENERAL PROVISIONS Definitions If a term is used in this form but is not defined in this section, refer to subsection 1.1(1) of the Instrument or to National Instrument 14-101 Definitions. In this form, \"company\" includes other types of business organizations such as partnerships, trusts and other unincorporated business entities;"
 
-form6_1_2_4 = "ITEM 1 - GENERAL PROVISIONS Definitions If a term is used in this form but is not defined in this section, refer to subsection 1.1(1) of the Instrument or to National Instrument 14-101 Definitions. In this form, 'equity incentive plan' means an incentive plan, or portion of an incentive plan, under which awards are granted and that falls within the scope of IFRS 2 Share-based Payment; "
+form6_1_2_4 = "ITEM 1 - GENERAL PROVISIONS Definitions If a term is used in this form but is not defined in this section, refer to subsection 1.1(1) of the Instrument or to National Instrument 14-101 Definitions. In this form, \"equity incentive plan\" means an incentive plan, or portion of an incentive plan, under which awards are granted and that falls within the scope of IFRS 2 Share-based Payment; "
 
-form6_1_2_5 = "ITEM 1 - GENERAL PROVISIONS Definitions If a term is used in this form but is not defined in this section, refer to subsection 1.1(1) of the Instrument or to National Instrument 14-101 Definitions. In this form, 'external management company' includes a subsidiary, affiliate or associate of the external management company;"
+form6_1_2_5 = "ITEM 1 - GENERAL PROVISIONS Definitions If a term is used in this form but is not defined in this section, refer to subsection 1.1(1) of the Instrument or to National Instrument 14-101 Definitions. In this form, \"external management company\" includes a subsidiary, affiliate or associate of the external management company;"
 
-form6_1_2_6 = "ITEM 1 - GENERAL PROVISIONS Definitions If a term is used in this form but is not defined in this section, refer to subsection 1.1(1) of the Instrument or to National Instrument 14-101 Definitions. In this form,'grant date' means a date determined for financial statement reporting purposes under IFRS 2 Share-based Payment;"
+form6_1_2_6 = "ITEM 1 - GENERAL PROVISIONS Definitions If a term is used in this form but is not defined in this section, refer to subsection 1.1(1) of the Instrument or to National Instrument 14-101 Definitions. In this form, \"grant date\" means a date determined for financial statement reporting purposes under IFRS 2 Share-based Payment;"
 
-form6_1_2_7 = "ITEM 1 - GENERAL PROVISIONS Definitions If a term is used in this form but is not defined in this section, refer to subsection 1.1(1) of the Instrument or to National Instrument 14-101 Definitions. In this form,'incentive plan' means any plan providing compensation that depends on achieving certain performance goals or similar conditions within a specified period;"
+form6_1_2_7 = "ITEM 1 - GENERAL PROVISIONS Definitions If a term is used in this form but is not defined in this section, refer to subsection 1.1(1) of the Instrument or to National Instrument 14-101 Definitions. In this form, \"incentive plan\" means any plan providing compensation that depends on achieving certain performance goals or similar conditions within a specified period;"
 
-form6_1_2_8 = "ITEM 1 - GENERAL PROVISIONS Definitions If a term is used in this form but is not defined in this section, refer to subsection 1.1(1) of the Instrument or to National Instrument 14-101 Definitions. In this form,'incentive plan award' means compensation awarded, earned, paid, or payable under an incentive plan;"
+form6_1_2_8 = "ITEM 1 - GENERAL PROVISIONS Definitions If a term is used in this form but is not defined in this section, refer to subsection 1.1(1) of the Instrument or to National Instrument 14-101 Definitions. In this form, \"incentive plan award\" means compensation awarded, earned, paid, or payable under an incentive plan;"
 
-form6_1_2_9 = "ITEM 1 - GENERAL PROVISIONS Definitions If a term is used in this form but is not defined in this section, refer to subsection 1.1(1) of the Instrument or to National Instrument 14-101 Definitions. In this form,'NEO' or 'named executive officer' means each of the following individuals:" \
+form6_1_2_9 = "ITEM 1 - GENERAL PROVISIONS Definitions If a term is used in this form but is not defined in this section, refer to subsection 1.1(1) of the Instrument or to National Instrument 14-101 Definitions. In this form, \"NEO\" or \"named executive officer\" means each of the following individuals:" \
               "(a) a CEO; " \
               "(b) a CFO; " \
               "(c) each of the three most highly compensated executive officers of the company, including any of its subsidiaries, or the three most highly compensated individuals acting in a similar capacity, other than the CEO and CFO, at the end of the most recently completed financial year whose total compensation was, individually, more than $150,000, as determined in accordance with subsection 1.3(6), for that financial year; and" \
               "(d) each individual who would be an NEO under paragraph (c) but for the fact that the individual was neither an executive officer of the company or its subsidiaries, nor acting in a similar capacity, at the end of that financial year;"
 
-form6_1_2_10 = "ITEM 1 - GENERAL PROVISIONS Definitions If a term is used in this form but is not defined in this section, refer to subsection 1.1(1) of the Instrument or to National Instrument 14-101 Definitions. In this form, 'non-equity incentive plan' means an incentive plan or portion of an incentive plan that is not an equity incentive plan;"
+form6_1_2_10 = "ITEM 1 - GENERAL PROVISIONS Definitions If a term is used in this form but is not defined in this section, refer to subsection 1.1(1) of the Instrument or to National Instrument 14-101 Definitions. In this form, \"non-equity incentive plan\" means an incentive plan or portion of an incentive plan that is not an equity incentive plan;"
 
-form6_1_2_11 = "ITEM 1 - GENERAL PROVISIONS Definitions If a term is used in this form but is not defined in this section, refer to subsection 1.1(1) of the Instrument or to National Instrument 14-101 Definitions. In this form,'option-based award' means an award under an equity incentive plan of options, including, for greater certainty, share options, share appreciation rights, and similar instruments that have option-like features;"
+form6_1_2_11 = "ITEM 1 - GENERAL PROVISIONS Definitions If a term is used in this form but is not defined in this section, refer to subsection 1.1(1) of the Instrument or to National Instrument 14-101 Definitions. In this form, \"option-based award\" means an award under an equity incentive plan of options, including, for greater certainty, share options, share appreciation rights, and similar instruments that have option-like features;"
 
-form6_1_2_12 = "ITEM 1 - GENERAL PROVISIONS Definitions If a term is used in this form but is not defined in this section, refer to subsection 1.1(1) of the Instrument or to National Instrument 14-101 Definitions. In this form,'plan' includes any plan, contract, authorization, or arrangement, whether or not set out in any formal document, where cash, securities, similar instruments or any other property may be received, whether for one or more persons;"
+form6_1_2_12 = "ITEM 1 - GENERAL PROVISIONS Definitions If a term is used in this form but is not defined in this section, refer to subsection 1.1(1) of the Instrument or to National Instrument 14-101 Definitions. In this form, \"plan\" includes any plan, contract, authorization, or arrangement, whether or not set out in any formal document, where cash, securities, similar instruments or any other property may be received, whether for one or more persons;"
 
-form6_1_2_13 = "ITEM 1 - GENERAL PROVISIONS Definitions If a term is used in this form but is not defined in this section, refer to subsection 1.1(1) of the Instrument or to National Instrument 14-101 Definitions. In this form,'replacement grant' means an option that a reasonable person would consider to be granted in relation to a prior or potential cancellation of an option;"
+form6_1_2_13 = "ITEM 1 - GENERAL PROVISIONS Definitions If a term is used in this form but is not defined in this section, refer to subsection 1.1(1) of the Instrument or to National Instrument 14-101 Definitions. In this form, \"replacement grant\" means an option that a reasonable person would consider to be granted in relation to a prior or potential cancellation of an option;"
 
-form6_1_2_14 = "ITEM 1 - GENERAL PROVISIONS Definitions If a term is used in this form but is not defined in this section, refer to subsection 1.1(1) of the Instrument or to National Instrument 14-101 Definitions. In this form,'repricing' means, in relation to an option, adjusting or amending the exercise or base price of the option, but excludes any adjustment or amendment that equally affects all holders of the class of securities underlying the option and occurs through the operation of a formula or mechanism in, or applicable to, the option;"
+form6_1_2_14 = "ITEM 1 - GENERAL PROVISIONS Definitions If a term is used in this form but is not defined in this section, refer to subsection 1.1(1) of the Instrument or to National Instrument 14-101 Definitions. In this form, \"repricing\" means, in relation to an option, adjusting or amending the exercise or base price of the option, but excludes any adjustment or amendment that equally affects all holders of the class of securities underlying the option and occurs through the operation of a formula or mechanism in, or applicable to, the option;"
 
-form6_1_2_15 = "ITEM 1 - GENERAL PROVISIONS Definitions If a term is used in this form but is not defined in this section, refer to subsection 1.1(1) of the Instrument or to National Instrument 14-101 Definitions. In this form,'share-based award' means an award under an equity incentive plan of equity-based instruments that do not have option-like features, including, for greater certainty, common shares, restricted shares, restricted share units, deferred share units, phantom shares, phantom share units, common share equivalent units, and stock."
+form6_1_2_15 = "ITEM 1 - GENERAL PROVISIONS Definitions If a term is used in this form but is not defined in this section, refer to subsection 1.1(1) of the Instrument or to National Instrument 14-101 Definitions. In this form, \"share-based award\" means an award under an equity incentive plan of equity-based instruments that do not have option-like features, including, for greater certainty, common shares, restricted shares, restricted share units, deferred share units, phantom shares, phantom share units, common share equivalent units, and stock."
 
 form6_1_3_1 = "ITEM 1 - GENERAL PROVISIONS Preparing the form "\
 "(1) All compensation to be included"\

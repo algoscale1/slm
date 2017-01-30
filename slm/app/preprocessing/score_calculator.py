@@ -40,10 +40,31 @@ class ScoreData:
             self.tfidf = None
 
     def init(self):
-        self.word2vec_model = Word2Vec.load('slm/app/cached_models/word2vec_model.gensim')
-    #     self.word2vec_model = Word2Vec.load_word2vec_format('app/cached_models/google.bin',binary=True)
+        # self.word2vec_model = Word2Vec.load('slm/app/cached_models/word2vec_model.gensim')
+        self.word2vec_model = Word2Vec.load_word2vec_format('app/cached_models/google.bin',binary=True)
 
-    def calculate_score_word2vec(self,df, requested_question):
+    def extracting_definitions(self,df,requested_question):
+        req_tokens = [self.generate_tokens(requested_question)]
+        req_question_vectorized = self.vectorize(req_tokens)
+        for tokens in req_tokens:
+            word = '|'.join(tokens)
+            df1 = df.loc[df['terms'].str.contains(word)]
+
+        score3 = []
+        for i, datapoint in df1.iterrows():
+            data_tokenized3 = [self.generate_tokens(datapoint.topic_information)]
+            data_vectorized3 = self.vectorize(data_tokenized3)
+            similarity3 = self.get_vec_similarity(data_vectorized3, req_question_vectorized)
+            score3.append(similarity3)
+
+        df1["score"] = score3
+        df1 = df1.sort_values(by=["score"], ascending=False)
+        df1.reset_index(inplace=True, drop=True)
+        df1 = df1[['topic', 'topic_information','score']]
+        return df1
+
+
+    def calculate_score_word2vec(self,df,requested_question):
        if self.word2vec_model is None:
            self.init()
        # Requested input question from sample dataset
@@ -52,54 +73,50 @@ class ScoreData:
        # requested_question = "When does a meeting have to be held?"
        # requested_question = "Do meeting results have to be disclosed?"
        # requested_question = "What information is required about fees paid to a compensation expert?"
-       req_pos_tags = self.data_parser_pos_tagging(requested_question)
-       # req_synonyms = self.data_parser_synonyms_extract_stopwords_cleaning(req_pos_tags)
-       req_question_vectorized = self.create_avg_sentence_vector(req_pos_tags)
+       definition_df = self.extracting_definitions(df,requested_question)
+
+       sent_tokens = self.data_parser_pos_tagging(requested_question)
+       req_question_vectorized = self.create_avg_sentence_vector(sent_tokens)
        score1 = []
        for i, datapoint in df.iterrows():
            pos_tags_all = self.data_parser_pos_tagging(datapoint.topic_information)
-           # all_synonyms = self.data_parser_synonyms_extract_stopwords_cleaning(pos_tags_all)
-           data_vectorized1 = self.create_avg_sentence_vector(pos_tags_all)
+           pos_tags = self.data_parser_pos_tagging(datapoint.topic.lower())
+           topic_keywords = self.generate_tokens(datapoint.topic.lower())
+           data_vectorized1 = self.create_avg_sentence_vector(pos_tags_all + pos_tags)
            similarity1 = self.get_vec_similarity(data_vectorized1, req_question_vectorized)
-           score1.append(similarity1)
+           keyword_similarity = self.get_common_tokens(sent_tokens, topic_keywords)
+           score1.append(similarity1 + (keyword_similarity / 50))
 
        df["score_w2v"] = score1
        df = df.sort_values(by=["score_w2v"], ascending=False)
-       df = df.loc[df.score_w2v > 0.4]
-       df = self.tfidf_scoring(df, requested_question)
+       df = df.loc[df.score_w2v > 0.40]
+       df = self.tfidf_scoring(df,requested_question)
        df["score"] = df["score_w2v"] + df["score_tfidf"]
-       df = df.loc[df.score > 0.5]
+       df = df.loc[df.score > 0.55]
        df.drop(['score_w2v', 'score_tfidf'], axis=1, inplace=True)
        df = df.sort_values(by=["score"], ascending=False)
        df.reset_index(inplace=True, drop=True)
-       # df.to_csv("/home/algo/Desktop/results_ques3.csv")
+       final_df = pd.concat([definition_df, df])
+       final_df.drop_duplicates(subset=['topic_information'], keep='first', inplace=True)
+       final_df.reset_index(inplace=True, drop=True)
+       # final_df.to_csv("/home/algo/Desktop/old_ques3.csv")
        return df
 
-    def tfidf_scoring(self,df, requested_question):
-       # Requested input question from sample dataset
-       # requested_question = "Is shareholder consent needed for notice and access?"
-       # requested_question = "Does a circular have to say the debt that a director owes to the company?"
-       # requested_question = "When does a meeting have to be held?"
-       # requested_question = "Do meeting results have to be disclosed?"
-       # requested_question = "What information is required about fees paid to a compensation expert?"
-
-       # req_pos_tags = self.data_parser_pos_tagging(requested_question)
-       req_question_tokenized = [self.create_tokens(requested_question)]
+    def tfidf_scoring(self,df,requested_question):
+       req_question_tokenized = [self.create_preprocessed_tokens(requested_question)]
        req_question_vectorized = self.vectorize(req_question_tokenized)
        score2 = []
        for i, datapoint in df.iterrows():
-           data_tokenized2 = [self.create_tokens(datapoint.topic_information)]
+           data_tokenized2 = [self.create_preprocessed_tokens(datapoint.topic_information)]
            data_vectorized2 = self.vectorize(data_tokenized2)
            similarity2 = self.get_vec_similarity(data_vectorized2, req_question_vectorized)
            score2.append(similarity2)
-
        df["score_tfidf"] = score2
        df = df.sort_values(by=["score_tfidf"], ascending=False)
        df = df.loc[df.score_tfidf > 0.00]
        df = df.sort_values(by=["topic"], ascending=False)
        df.reset_index(inplace=True, drop=True)
        # dict = {k: g["topic_information"].tolist() for k, g in df.groupby("topic")}
-       # print (dict)
        return df
 
 
@@ -107,10 +124,10 @@ class ScoreData:
                                      ni51_tree,cbcact_tree,ni54_tree,form5_tree,form6_tree,tsx_manual_tree):
         all_trees = [cbcr_tree,osact_tree,form1_tree, ni58_tree, notice_tsx_tree, notice_cbc_tree,
                                      ni51_tree,cbcact_tree,ni54_tree,form5_tree,form6_tree,tsx_manual_tree]
-        tokenized_trees = [self.create_tokens(node) for tree in all_trees for node in tree]
+        tokenized_trees = [self.create_preprocessed_tokens(node) for tree in all_trees for node in tree]
         #Training ngrams and tfidf model
         self.train_ngrams_models(tokenized_trees)
-        self.train_word2vec_model(tokenized_trees)
+        # self.train_word2vec_model(tokenized_trees)
 
         cbcr_df = pd.DataFrame({'topic' : cbcr_tree[0],'topic_information':cbcr_tree})
         cbcr_df = self.standarize_df(cbcr_df)
@@ -138,7 +155,20 @@ class ScoreData:
         tsx_manual_df = self.standarize_df(tsx_manual_df)
 
         complete_df = pd.concat([ni51_df,ni54_df,ni58_df,osact_df,cbcact_df,cbcr_df,form1_df,form5_df,form6_df,notice_cbc_df,notice_tsx_df,tsx_manual_df],axis = 0)
-        return complete_df
+        complete_df_with_def_terms = self.adding_definition_terms(complete_df)
+
+        return complete_df_with_def_terms
+
+    def adding_definition_terms(self,df):
+        terms = []
+        for row in df.topic_information:
+            t = row.split("means", 1)[0]
+            t = self.extract_terms_between_quotes(t)
+            terms.append(t)
+        df['terms'] = terms
+        df['terms'] = df['terms'].str.replace(r'[^\w\s]', ' ')
+        return df
+
 
     def standarize_df(self,df):
         df.drop(df.index[[0]],inplace= True)
@@ -163,21 +193,17 @@ class ScoreData:
             sent_vector = np.divide(sent_vector, number_of_words)
         return sent_vector
 
-    def create_tokens(self,raw_sentence):
+    def create_preprocessed_tokens(self,raw_sentence):
         tokens = [self.lmtzr.lemmatize(word.lower()) for word in re.findall(self.words, raw_sentence)
                   if word.lower() not in self.stopwords]
-        tokens = [self.stemmer.stem(word) for word in tokens]
+        tokens = [self.stemmer.stem(word) for word in tokens if len(word) > 2]
         return tokens
 
-    def create_word2vec_tokens(self, raw_sentence):
-        """
-        tokenize sentence for word2vec model
-        :param raw_sentence: raw_sentence in the form of string
-        :return: tokenize sentence in list form
-        """
+    def generate_tokens(self, raw_sentence):
         tokens = [word.lower() for word in re.findall(self.words, raw_sentence) if
                   word.lower() not in self.stopwords]
         return tokens
+
 
     def train_ngrams_models(self,sent_tokens):
         """
@@ -258,6 +284,7 @@ class ScoreData:
         for sentence in sentences_tokenized:
             sentence_tokenized = word_tokenize(sentence.lower())
             pos_noun_tags = self.pos_tagging(sentence_tokenized, pos_noun_tags)
+            pos_noun_tags = [tags for tags in pos_noun_tags if len(tags) > 2]
         return pos_noun_tags
 
     def pos_tagging(self, sentence, pos_noun_tags):
@@ -297,3 +324,25 @@ class ScoreData:
             for ss in wn.synsets(word):
                 word_list_with_synonyms.extend(ss.lemma_names())
         return list(set(word_list_with_synonyms))
+
+    def get_common_tokens(self, list1, list2):
+        """
+        calculates intersection of two list of words
+        :param list1: list of words
+        :param list2: list of words
+        :return: lenght of common words
+        """
+        list2 = [word for word in list2]
+        l1 = []
+        l2 = []
+        for word in list1:
+            l1.append(word)
+        for word in list2:
+            l2.append(word)
+        sim = len(set(l1).intersection(l2))
+        return sim
+
+    @staticmethod
+    def extract_terms_between_quotes(text):
+        terms = re.findall(r'\"(.+?)\"', text.lower())
+        return ",".join(terms)

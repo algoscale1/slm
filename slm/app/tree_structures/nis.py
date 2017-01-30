@@ -1,10 +1,10 @@
 
 ni58_root ="National Instrument 58-101 Disclosure of Corporate Governance Practices"
 
-ni58_1_1 ="Part 1 Definitions and Application 1.1 Definitions - In this Instrument 'code' means a code of business conduct and ethics;"
-ni58_1_2 ="Part 1 Definitions and Application 1.1 Definitions - In this Instrument 'executive officer' has the same meaning as in NI 51-102;"
-ni58_1_3 ="Part 1 Definitions and Application 1.1 Definitions - In this Instrument 'NI 52-110' means National Instrument 52-110 Audit Committees;"
-ni58_1_4 ="Part 1 Definitions and Application 1.1 Definitions - In this Instrument 'significant security holder' means, in relation to an issuer, a security holder that " \
+ni58_1_1 ="Part 1 Definitions and Application 1.1 Definitions - In this Instrument \"code\" means a code of business conduct and ethics;"
+ni58_1_2 ="Part 1 Definitions and Application 1.1 Definitions - In this Instrument \"executive officer\" has the same meaning as in NI 51-102;"
+ni58_1_3 ="Part 1 Definitions and Application 1.1 Definitions - In this Instrument \"NI 52-110\" means National Instrument 52-110 Audit Committees;"
+ni58_1_4 ="Part 1 Definitions and Application 1.1 Definitions - In this Instrument \"significant security holder\" means, in relation to an issuer, a security holder that " \
             " (a) owns or controls 10 % or more of any class of the issuer's voting securities, or" \
 	        " (b) is able to affect materially the control of the issuer, whether alone or by acting in concert with others;"
 ni58_1_5 = "Part 1 Definitions and Application 1.2 Meaning of Independence - (1) For the purposes of this Instrument, a director is independent if he or she would be independent within the meaning of section 1.4 of NI 52-110."
@@ -23,17 +23,17 @@ ni58 = {'id': ni58_root, 'children': [
 
 ni51_root ="National Instrument 51-102 Continuous Disclosure Obligations"
 
-ni51_1_1 ="PART 1 DEFINITIONS AND INTERPRETATION 1.1 Definitions and Interpretation (1) In this Instrument: 'executive officer' means, for a reporting issuer, an individual who is"\
+ni51_1_1 ="PART 1 DEFINITIONS AND INTERPRETATION 1.1 Definitions and Interpretation (1) In this Instrument: \"executive officer\" means, for a reporting issuer, an individual who is"\
 "(a) a chair, vice-chair or president; "\
 "(a.1) a chief executive officer or chief financial officer;"\
 "(b)  a vice-president in charge of a principal business unit, division or function including sales, finance or production; or"\
 "(c)  performing a policy-making function in respect of the issuer;"
-ni51_1_2 ="PART 1 DEFINITIONS AND INTERPRETATION 1.1 Definitions and Interpretation (1) In this Instrument: 'form of proxy' means a document containing the information required under section 9.4 that, on completion and execution by or on behalf of a securityholder, becomes a proxy; "
-ni51_1_3 ="PART 1 DEFINITIONS AND INTERPRETATION 1.1 Definitions and Interpretation (1) In this Instrument: 'information circular' means a completed Form 51-102F5 Information Circular; "
-ni51_1_4 ="PART 1 DEFINITIONS AND INTERPRETATION 1.1 Definitions and Interpretation (1) In this Instrument: 'MD&A' means a completed Form 51-102F1 Management's Discussion & Analysis; "
-ni51_1_5 ="PART 1 DEFINITIONS AND INTERPRETATION 1.1 Definitions and Interpretation (1) In this Instrument: 'NI 54-101' means National Instrument 54-101 Communication with Beneficial Owners of Securities of a Reporting Issuer; "
-ni51_1_6 ="PART 1 DEFINITIONS AND INTERPRETATION 1.1 Definitions and Interpretation (1) In this Instrument: 'proxy' means a completed and executed form of proxy by which a securityholder has appointed a person or company as the securityholder's nominee to attend and act for the securityholder and on the securityholder's behalf at a meeting of securityholders; "
-ni51_1_7 ="PART 1 DEFINITIONS AND INTERPRETATION 1.1 Definitions and Interpretation (1) In this Instrument: 'proxy-related materials' means securityholder material relating to a meeting of securityholders that a person or company that solicits proxies is required under corporate law or securities legislation to send to the registered holders or beneficial owners of the securities;"
+ni51_1_2 ="PART 1 DEFINITIONS AND INTERPRETATION 1.1 Definitions and Interpretation (1) In this Instrument: \"form of proxy\" means a document containing the information required under section 9.4 that, on completion and execution by or on behalf of a securityholder, becomes a proxy; "
+ni51_1_3 ="PART 1 DEFINITIONS AND INTERPRETATION 1.1 Definitions and Interpretation (1) In this Instrument: \"information circular\" means a completed Form 51-102F5 Information Circular; "
+ni51_1_4 ="PART 1 DEFINITIONS AND INTERPRETATION 1.1 Definitions and Interpretation (1) In this Instrument: \"MD&A\" means a completed Form 51-102F1 Management's Discussion & Analysis; "
+ni51_1_5 ="PART 1 DEFINITIONS AND INTERPRETATION 1.1 Definitions and Interpretation (1) In this Instrument: \"NI 54-101\" means National Instrument 54-101 Communication with Beneficial Owners of Securities of a Reporting Issuer; "
+ni51_1_6 ="PART 1 DEFINITIONS AND INTERPRETATION 1.1 Definitions and Interpretation (1) In this Instrument: \"proxy\" means a completed and executed form of proxy by which a securityholder has appointed a person or company as the securityholder's nominee to attend and act for the securityholder and on the securityholder's behalf at a meeting of securityholders; "
+ni51_1_7 ="PART 1 DEFINITIONS AND INTERPRETATION 1.1 Definitions and Interpretation (1) In this Instrument: \"proxy-related materials\" means securityholder material relating to a meeting of securityholders that a person or company that solicits proxies is required under corporate law or securities legislation to send to the registered holders or beneficial owners of the securities;"
 
 
 ni51_2_1_1 ="PART 9 PROXY SOLICITATION AND INFORMATION CIRCULARS 9.1 Sending of Proxies and Information Circulars"\
@@ -153,25 +153,25 @@ ni51 = {'id': ni51_root, 'children': [
 
 ni54_root ="National Instrument 54-101 Communication with Beneficial Owners of Securities of a Reporting Issuer"
 
-ni54_1_1 = "PART 1 DEFINITIONS AND INTERPRETATION 1.1 Definitions  - In this Instrument 'beneficial owner' means, for a security held by an intermediary in an account, the person or company that is identified as providing the instructions contained in a client response form or, if no instructions are provided, the person or company that has the authority to provide those instructions; "
-ni54_1_2 ="PART 1 DEFINITIONS AND INTERPRETATION 1.1 Definitions  - In this Instrument 'business day' means a day other than a Saturday, Sunday or statutory holiday in the local jurisdiction; "
-ni54_1_3 = "PART 1 DEFINITIONS AND INTERPRETATION 1.1 Definitions  - In this Instrument 'day' means a calendar day unless express reference is made to a business day; "
-ni54_1_4 = "PART 1 DEFINITIONS AND INTERPRETATION 1.1 Definitions  - In this Instrument 'NOBO' means a non-objecting beneficial owner;  "\
-"'non-objecting beneficial owner' means a beneficial owner of securities that has provided instructions to an intermediary holding the securities in an account on behalf of the beneficial owner that the beneficial owner does not object, for that account, to the intermediary disclosing ownership information about the beneficial owner under this Instrument, "
-ni54_1_5 ="PART 1 DEFINITIONS AND INTERPRETATION 1.1 Definitions  - In this Instrument 'notice-and-access' means"\
+ni54_1_1 = "PART 1 DEFINITIONS AND INTERPRETATION 1.1 Definitions  - In this Instrument \" beneficial owner \" means, for a security held by an intermediary in an account, the person or company that is identified as providing the instructions contained in a client response form or, if no instructions are provided, the person or company that has the authority to provide those instructions; "
+ni54_1_2 ="PART 1 DEFINITIONS AND INTERPRETATION 1.1 Definitions  - In this Instrument \"business day'\" means a day other than a Saturday, Sunday or statutory holiday in the local jurisdiction; "
+ni54_1_3 = "PART 1 DEFINITIONS AND INTERPRETATION 1.1 Definitions  - In this Instrument \"day\" means a calendar day unless express reference is made to a business day; "
+ni54_1_4 = "PART 1 DEFINITIONS AND INTERPRETATION 1.1 Definitions  - In this Instrument \"NOBO\" means a non-objecting beneficial owner;  "\
+" \"non-objecting beneficial owner\" means a beneficial owner of securities that has provided instructions to an intermediary holding the securities in an account on behalf of the beneficial owner that the beneficial owner does not object, for that account, to the intermediary disclosing ownership information about the beneficial owner under this Instrument, "
+ni54_1_5 ="PART 1 DEFINITIONS AND INTERPRETATION 1.1 Definitions  - In this Instrument \" notice-and-access \" means "\
 "(a) in respect of registered holders of voting securities of a reporting issuer, the delivery procedures referred to in section 9.1.1 of National Instrument 51-102 Continuous Disclosure Obligations, or"\
 "(b) in respect of beneficial owners of securities of a reporting issuer, the delivery procedures referred to in section 2.7.1;"
-ni54_1_6 ="PART 1 DEFINITIONS AND INTERPRETATION 1.1 Definitions  - In this Instrument 'notification of meeting and record dates' means the notification referred to in section 2.2;"
-ni54_1_7 ="PART 1 DEFINITIONS AND INTERPRETATION 1.1 Definitions  - In this Instrument 'objecting beneficial owner' means a beneficial owner of securities that (a) has provided instructions to an intermediary holding the securities in an account on behalf of the beneficial owner that the beneficial owner objects, for that account, to the intermediary disclosing ownership information about the beneficial owner under this Instrument, or (b) is an objecting beneficial owner under subparagraph (iii) of paragraph 3.3(b);"
-ni54_1_8 ="PART 1 DEFINITIONS AND INTERPRETATION 1.1 Definitions  - In this Instrument 'OBO' means an objecting beneficial owner;"
-ni54_1_9 ="PART 1 DEFINITIONS AND INTERPRETATION 1.1 Definitions  - In this Instrument 'proxy-related materials' means securityholder material relating to a meeting that the reporting issuer is required under corporate law or securities legislation to send to the registered holders or beneficial owners of the securities;"
-ni54_1_10 ="PART 1 DEFINITIONS AND INTERPRETATION 1.1 Definitions  - In this Instrument 'record date for notice' means, for a meeting, the date established in accordance with corporate law for the determination of the registered holders of securities that are entitled to receive notice of the meeting;"
-ni54_1_11 ="PART 1 DEFINITIONS AND INTERPRETATION 1.1 Definitions  - In this Instrument 'record date for voting' means, for a meeting, the date, if any, established in accordance with corporate law for the determination of the registered holders of securities that are entitled to vote at the meeting;"
-ni54_1_12 ="PART 1 DEFINITIONS AND INTERPRETATION 1.1 Definitions  - In this Instrument 'registered holder' means, for a security, the person or company shown as the holder of the security on the books or records of the reporting issuer;"
-ni54_1_13 ="PART 1 DEFINITIONS AND INTERPRETATION 1.1 Definitions  - In this Instrument 'request for beneficial ownership information' means, for a security, a request for beneficial ownership information in the form of Form 54-101F2 sent by a reporting issuer to a proximate intermediary holding the security;"
-ni54_1_14 ="PART 1 DEFINITIONS AND INTERPRETATION 1.1 Definitions  - In this Instrument 'securityholder materials' means, for a reporting issuer, materials that are sent to registered holders or beneficial owners of securities of the reporting issuer;"
-ni54_1_15 ="PART 1 DEFINITIONS AND INTERPRETATION 1.1 Definitions  - In this Instrument 'send' means to deliver, send or forward or arrange to deliver, send or forward in any manner, including by prepaid mail, courier or by electronic means; and"
-ni54_1_16 ="PART 1 DEFINITIONS AND INTERPRETATION 1.1 Definitions  - In this Instrument 'stratification', in relation to a reporting issuer using notice-and-access, means procedures whereby a paper copy of the information circular and, if applicable, the documents in paragraph 2.7.1 (2) (b), are included with either or both of the following:"\
+ni54_1_6 ="PART 1 DEFINITIONS AND INTERPRETATION 1.1 Definitions  - In this Instrument \" notification of meeting and record dates \" means the notification referred to in section 2.2;"
+ni54_1_7 ="PART 1 DEFINITIONS AND INTERPRETATION 1.1 Definitions  - In this Instrument \"OBO\" means an objecting beneficial owner; "\
+"'objecting beneficial owner' means a beneficial owner of securities that (a) has provided instructions to an intermediary holding the securities in an account on behalf of the beneficial owner that the beneficial owner objects, for that account, to the intermediary disclosing ownership information about the beneficial owner under this Instrument, or (b) is an objecting beneficial owner under subparagraph (iii) of paragraph 3.3(b);"
+ni54_1_8 ="PART 1 DEFINITIONS AND INTERPRETATION 1.1 Definitions  - In this Instrument \"proxy-related materials\" means securityholder material relating to a meeting that the reporting issuer is required under corporate law or securities legislation to send to the registered holders or beneficial owners of the securities;"
+ni54_1_9 ="PART 1 DEFINITIONS AND INTERPRETATION 1.1 Definitions  - In this Instrument \" record date for notice \" means, for a meeting, the date established in accordance with corporate law for the determination of the registered holders of securities that are entitled to receive notice of the meeting;"
+ni54_1_10 ="PART 1 DEFINITIONS AND INTERPRETATION 1.1 Definitions  - In this Instrument \" record date for voting \" means, for a meeting, the date, if any, established in accordance with corporate law for the determination of the registered holders of securities that are entitled to vote at the meeting;"
+ni54_1_11 ="PART 1 DEFINITIONS AND INTERPRETATION 1.1 Definitions  - In this Instrument \"registered holder\" means, for a security, the person or company shown as the holder of the security on the books or records of the reporting issuer;"
+ni54_1_12 ="PART 1 DEFINITIONS AND INTERPRETATION 1.1 Definitions  - In this Instrument \"request for beneficial ownership information\" means, for a security, a request for beneficial ownership information in the form of Form 54-101F2 sent by a reporting issuer to a proximate intermediary holding the security;"
+ni54_1_13 ="PART 1 DEFINITIONS AND INTERPRETATION 1.1 Definitions  - In this Instrument \" securityholder materials \" means, for a reporting issuer, materials that are sent to registered holders or beneficial owners of securities of the reporting issuer;"
+ni54_1_14 ="PART 1 DEFINITIONS AND INTERPRETATION 1.1 Definitions  - In this Instrument \" send \" means to deliver, send or forward or arrange to deliver, send or forward in any manner, including by prepaid mail, courier or by electronic means; and"
+ni54_1_15 ="PART 1 DEFINITIONS AND INTERPRETATION 1.1 Definitions  - In this Instrument \" stratification \", in relation to a reporting issuer using notice-and-access, means procedures whereby a paper copy of the information circular and, if applicable, the documents in paragraph 2.7.1 (2) (b), are included with either or both of the following:"\
 "(a) the documents required to be sent to registered holders under subsection 9.1(1) of National Instrument 51-102 Continuous Disclosure Obligations;"\
 "(b) the documents required to be sent to beneficial owners under subsection 2.7.1 (1);"
 
@@ -327,7 +327,6 @@ ni54 = {'id': ni54_root, 'children': [
                         {'id': ni54_1_13, 'children': []},
                         {'id': ni54_1_14, 'children': []},
                         {'id': ni54_1_15, 'children': []},
-                        {'id': ni54_1_16, 'children': []},
                     {'id': ni54_2_1_1, 'children': []},
                     {'id': ni54_2_1_2, 'children': []},
                     {'id': ni54_2_1_3, 'children': []},

@@ -1,14 +1,14 @@
 
 cbcr_root = "Canada Business Corporations Regulations"
 
-cbcr_1_1 = "Part 1 General Electronic Documents 7 (1) For the purpose of paragraph 252_3(2)(a) of the Act, the consent shall be in writing."\
-"(2) For the purpose of paragraph 252_3(2)(b) of the Act, a notice, document or other information that is not required under the Act to be sent to a specific place may be sent as an electronic document to a place other than to an information system designated by the addressee under paragraph 252_3(2)(a) of the Act by posting it on or making it available through a generally accessible electronic source, such as a website, and by providing the addressee with notice in writing of the availability and location of that electronic document."
+cbcr_1_1 = "Part 1 General Electronic Documents 7 (1) For the purpose of paragraph 252.3(2)(a) of the Act, the consent shall be in writing."\
+" (2) For the purpose of paragraph 252.3(2)(b) of the Act, a notice, document or other information that is not required under the Act to be sent to a specific place may be sent as an electronic document to a place other than to an information system designated by the addressee under paragraph 252.3(2)(a) of the Act by posting it on or making it available through a generally accessible electronic source, such as a website, and by providing the addressee with notice in writing of the availability and location of that electronic document."
 
 cbcr_1_2 = "Part 1 General Notice of Meetings" \
-     "44 For the purpose of subsection 135(1) of the Act, the prescribed period for the directors to provide notice of the time and place of a meeting of shareholders is not less than 21 days and not more than 60 days before the meeting."
+     " 44 For the purpose of subsection 135(1) of the Act, the prescribed period for the directors to provide notice of the time and place of a meeting of shareholders is not less than 21 days and not more than 60 days before the meeting."
 cbcr_2_1 = "PART 7 Proxies and Proxy Solicitation Form of Proxy 54 For the purpose of subsection 149(1) of the Act, a form of proxy shall be in the form provided for in section 9.4 (Content 	of Form of Proxy) of NI 51-102."
 cbcr_2_2_1 = "PART 7 Proxies and Proxy Solicitation Form of Proxy Management Proxy Circular" \
-    "55 (1) Subject to subsection (3), a management proxy circular shall be in the form provided for in Form 51-102F5 (Information Circular) of NI 51-102, which form, in the circumstances described in Item 8 of Part 2 of that Form, includes the statement referred to in that Item."
+    " 55 (1) Subject to subsection (3), a management proxy circular shall be in the form provided for in Form 51-102F5 (Information Circular) of NI 51-102, which form, in the circumstances described in Item 8 of Part 2 of that Form, includes the statement referred to in that Item."
 cbcr_2_2_2 = "PART 7 Proxies and Proxy Solicitation Form of Proxy Management Proxy Circular 55 (2) A management proxy circular shall also set out the following:"\
     "(a) the percentage of votes required for the approval of any matter that is to be submitted to a vote of shareholders at the meeting, other than the election of directors;"\
     "(b) a statement of the right of a shareholder to dissent under section 190 of the Act with respect to any matter to be acted on at the meeting and a brief summary of the procedure to be followed to exercise that right;"\
@@ -29,9 +29,9 @@ cbcr = {'id': cbcr_root, 'children': [
 
 osact_root = "Ontario Securities Act"
 
-osact_1_1 ="Definitions 1. (1)  In this Act, 'form of proxy' means a written or printed form that, upon completion and execution by or on behalf of a security holder, becomes a proxy;"
-osact_1_2 ="Definitions 1. (1)  In this Act, 'proxy' means a completed and executed form of proxy by means of which a security holder has appointed a person or company as the security holder's nominee to attend and act for and on the security holder's behalf at a meeting of security holders;"
-osact_1_3 ="Definitions 1. (1)  In this Act, 'reporting issuer' means an issuer,"\
+osact_1_1 ="Definitions 1. (1)  In this Act, \"form of proxy\" means a written or printed form that, upon completion and execution by or on behalf of a security holder, becomes a proxy;"
+osact_1_2 ="Definitions 1. (1)  In this Act, \"proxy\" means a completed and executed form of proxy by means of which a security holder has appointed a person or company as the security holder's nominee to attend and act for and on the security holder's behalf at a meeting of security holders;"
+osact_1_3 ="Definitions 1. (1)  In this Act, \"reporting issuer\" means an issuer,"\
 	"(a) that has issued voting securities on or after the 1st day of May, 1967 in respect of which a prospectus was filed and a receipt therefor obtained under a predecessor of this Act or in respect of which a securities exchange take-over bid circular was filed under a predecessor of this Act,"\
 	"(b)	that has filed a prospectus and for which the Director has issued a receipt under this Act, "\
 	"(b.1)	that has filed a securities exchange take-over bid circular under this Act before December 14, 1999,"\
@@ -47,7 +47,7 @@ osact_2_1 ="PART XVIII CONTINUOUS DISCLOSURE Filing of information circular 81 (
 osact_2_2 ="PART XVIII CONTINUOUS DISCLOSURE Filing of information circular Idem (2)  In any case where subsection (1) is not applicable, the reporting issuer shall file annually within 140 days from the end of its last financial year a report prepared and certified in accordance with the regulations."
 
 osact_3_1 = "PART XIX PROXIES AND PROXY SOLICITATION Definitions 84.  In this Part,"\
-"'information circular' means an information circular prepared in accordance with the regulations;"
+" \"information circular\" means an information circular prepared in accordance with the regulations;"
 
 osact_3_2 ="PART XIX PROXIES AND PROXY SOLICITATION Mandatory solicitation of proxies"\
 "85. Subject to section 88, if the management of a reporting issuer gives or intends to give to holders of its voting securities notice of a meeting, the management shall, concurrently with or prior to giving the notice to the security holders whose latest address as shown on the books of the reporting issuer is in Ontario, send to each such security holder who is entitled to notice of meeting, at the security holder's latest address as shown on the books of the reporting issuer, a form of proxy for use at the meeting that complies with the regulations."
@@ -85,49 +85,47 @@ cbcact_root ="Canada Business Corporations Act"
 
 cbcact_1_1 = "PART I Interpretation and Application Definitions"\
 "2 (1) In this Act,"\
-"distributing corporation means, subject to subsections (6) and (7), a distributing corporation as defined in the regulations;"\
+" \"distributing corporation\" means, subject to subsections (6) and (7), a distributing corporation as defined in the regulations;"\
 "prescribed means prescribed by the regulations;"\
 "send includes deliver;"
 
 cbcact_2_1_1 ="PART XII Shareholders Place of meetings 132 (1) Meetings of shareholders of a corporation shall be held at the place within Canada provided in the by-laws or, in the absence of such provision, at the place within Canada that the directors determine. "
-cbcact_2_1_2 ="PART XII Shareholders Meeting outside Canada (2) Despite subsection (1), a meeting of shareholders of a corporation may be held at a place outside Canada if the place is specified in the articles or all the shareholders entitled to vote at the meeting agree that the meeting is to be held at that place. "
-cbcact_2_1_3 ="PART XII Shareholders Exception (3) A shareholder who attends a meeting of shareholders held outside Canada is deemed to have agreed to it being held outside Canada except when the shareholder attends the meeting for the express purpose of objecting to the transaction of any business on the grounds that the meeting is not lawfully held."
-cbcact_2_1_4 =" PART XII Shareholders Participation in meeting by electronic means (4) Unless the by-laws otherwise provide, any person entitled to attend a meeting of shareholders may participate in the meeting, in accordance with the regulations, if any, by means of a telephonic, electronic or other communication facility that permits all participants to communicate adequately with each other during the meeting, if the corporation makes available such a communication facility. A person participating in a meeting by such means is deemed for the purposes of this Act to be present at the meeting."
-cbcact_2_1_5 =" PART XII Shareholders Meeting held by electronic means (5) If the directors or the shareholders of a corporation call a meeting of shareholders pursuant to this Act, those directors or shareholders, as the case may be, may determine that the meeting shall be held, in accordance with the regulations, if any, entirely by means of a telephonic, electronic or other communication facility that permits all participants to communicate adequately with each other during the meeting, if the by-laws so provide."
+cbcact_2_1_2 ="PART XII Shareholders Meeting outside Canada 132 (2) Despite subsection (1), a meeting of shareholders of a corporation may be held at a place outside Canada if the place is specified in the articles or all the shareholders entitled to vote at the meeting agree that the meeting is to be held at that place. "
+cbcact_2_1_3 ="PART XII Shareholders Exception 132 (3) A shareholder who attends a meeting of shareholders held outside Canada is deemed to have agreed to it being held outside Canada except when the shareholder attends the meeting for the express purpose of objecting to the transaction of any business on the grounds that the meeting is not lawfully held."
+cbcact_2_1_4 =" PART XII Shareholders Participation in meeting by electronic means 132 (4) Unless the by-laws otherwise provide, any person entitled to attend a meeting of shareholders may participate in the meeting, in accordance with the regulations, if any, by means of a telephonic, electronic or other communication facility that permits all participants to communicate adequately with each other during the meeting, if the corporation makes available such a communication facility. A person participating in a meeting by such means is deemed for the purposes of this Act to be present at the meeting."
+cbcact_2_1_5 =" PART XII Shareholders Meeting held by electronic means 132 (5) If the directors or the shareholders of a corporation call a meeting of shareholders pursuant to this Act, those directors or shareholders, as the case may be, may determine that the meeting shall be held, in accordance with the regulations, if any, entirely by means of a telephonic, electronic or other communication facility that permits all participants to communicate adequately with each other during the meeting, if the by-laws so provide."
 
 cbcact_2_2_1 ="PART XII Shareholders Calling annual meetings"\
 "133 (1) The directors of a corporation shall call an annual meeting of shareholders"\
 "(a) not later than eighteen months after the corporation comes into existence; and"\
 "(b) subsequently, not later than fifteen months after holding the last preceding annual meeting but no later than six months after the end of the corporation's preceding financial year."
-cbcact_2_2_2 ="PART XII Shareholders Order to delay calling of annual meeting (3) Despite subsection (1), the corporation may apply to the court for an order extending the time for calling an annual meeting."
+cbcact_2_2_2 ="PART XII Shareholders Order to delay calling of annual meeting 133 (3) Despite subsection (1), the corporation may apply to the court for an order extending the time for calling an annual meeting."
 
 cbcact_2_3_1 ="PART XII Shareholders Fixing record date"\
 "134 (1) The directors may, within the prescribed period, fix in advance a date as the record date for the purpose of determining shareholders"\
 "(c) entitled to receive notice of a meeting of shareholders;"\
 "(d) entitled to vote at a meeting of shareholders; "
-cbcact_2_3_2 = "PART XII Shareholders No record date fixed (2) If no record date is fixed,"\
+cbcact_2_3_2 = "PART XII Shareholders No record date fixed 134 (2) If no record date is fixed,"\
 "(a) the record date for the determination of shareholders entitled to receive notice of a meeting of shareholders shall be"\
 "(i) at the close of business on the day immediately preceding the day on which the notice is given, or"\
 "(ii) if no notice is given, the day on which the meeting is held; "
-cbcact_2_3_3 = "PART XII Shareholders When record date fixed (3) If a record date is fixed, unless notice of the record date is waived in writing by every holder of a share of the class or series affected whose name is set out in the securities register at the close of business on the day the directors fix the record date, notice of the record date must be given within the prescribed period"\
+cbcact_2_3_3 = "PART XII Shareholders When record date fixed 134 (3) If a record date is fixed, unless notice of the record date is waived in writing by every holder of a share of the class or series affected whose name is set out in the securities register at the close of business on the day the directors fix the record date, notice of the record date must be given within the prescribed period"\
 "(a) by advertisement in a newspaper published or distributed in the place where the corporation has its registered office and in each place in Canada where it has a transfer agent or where a transfer of its shares may be recorded; and"\
 "(b) by written notice to each stock exchange in Canada on which the shares of the corporation are listed for trading."
 
 cbcact_2_4_1 ="PART XII Shareholders Notice of meeting"\
 "135 (1) Notice of the time and place of a meeting of shareholders shall be sent within the prescribed period to"\
-"(a) each shareholder entitled to vote at the meeting;"\
-"(b) each director; and"\
-"(c) the auditor of the corporation."
-cbcact_2_4_2 ="PART XII Shareholders Exception shareholders not registered (2) A notice of a meeting is not required to be sent to shareholders who were not registered on the records of the corporation or its transfer agent on the record date determined under paragraph 134(1)(c) or subsection 134(2), but failure to receive a notice does not deprive a shareholder of the right to vote at the meeting."
+"(a) each shareholder entitled to vote at the meeting; (b) each director; and (c) the auditor of the corporation."
+cbcact_2_4_2 ="PART XII Shareholders Exception shareholders not registered 135 (2) A notice of a meeting is not required to be sent to shareholders who were not registered on the records of the corporation or its transfer agent on the record date determined under paragraph 134(1)(c) or subsection 134(2), but failure to receive a notice does not deprive a shareholder of the right to vote at the meeting."
 
 cbcact_2_5_1 ="PART XII Shareholders Voting"\
 " 141 (1) Unless the by-laws otherwise provide, voting at a meeting of shareholders shall be by show of hands except where a ballot is demanded by a shareholder or proxyholder entitled to vote at the meeting."
-cbcact_2_5_2 ="PART XII Shareholders Ballot (2) A shareholder or proxyholder may demand a ballot either before or after any vote by show of hands."
-cbcact_2_5_3 ="PART XII Shareholders Electronic voting (3) Despite subsection (1), unless the by-laws otherwise provide, any vote referred to in subsection (1) may be held, in accordance with the regulations, if any, entirely by means of a telephonic, electronic or other communication facility, if the corporation makes available such a communication facility."
-cbcact_2_5_4 ="PART XII Shareholders Voting while participating electronically (4) Unless the by-laws otherwise provide, any person participating in a meeting of shareholders under subsection 132(4) or (5) and entitled to vote at that meeting may vote, in accordance with the regulations, if any, by means of the telephonic, electronic or other communication facility that the corporation has made available for that purpose."
+cbcact_2_5_2 ="PART XII Shareholders Ballot 141 (2) A shareholder or proxyholder may demand a ballot either before or after any vote by show of hands."
+cbcact_2_5_3 ="PART XII Shareholders Electronic voting 141 (3) Despite subsection (1), unless the by-laws otherwise provide, any vote referred to in subsection (1) may be held, in accordance with the regulations, if any, entirely by means of a telephonic, electronic or other communication facility, if the corporation makes available such a communication facility."
+cbcact_2_5_4 ="PART XII Shareholders Voting while participating electronically 141 (4) Unless the by-laws otherwise provide, any person participating in a meeting of shareholders under subsection 132(4) or (5) and entitled to vote at that meeting may vote, in accordance with the regulations, if any, by means of the telephonic, electronic or other communication facility that the corporation has made available for that purpose."
 
-cbcact_3_1_1 = "PART XIII Proxies Definitions 147 In this Part, form of proxy means a written or printed form that, on completion and execution or, in Quebec, on signing by or on behalf of a shareholder, becomes a proxy;"
-cbcact_3_1_2 = "PART XIII Proxies Definitions 147 In this Part, intermediary means a person who holds a security on behalf of another person who is not the registered holder of the security, and includes" \
+cbcact_3_1_1 = "PART XIII Proxies Definitions 147 In this Part, \"form of proxy\" means a written or printed form that, on completion and execution or, in Quebec, on signing by or on behalf of a shareholder, becomes a proxy;"
+cbcact_3_1_2 = "PART XIII Proxies Definitions 147 In this Part, \"intermediary\" means a person who holds a security on behalf of another person who is not the registered holder of the security, and includes" \
 "(a) a securities broker or dealer required to be registered to trade or deal in securities under the laws of any jurisdiction;"\
 "(b) a securities depositary;"\
 "(c) a financial institution;"\
@@ -136,12 +134,12 @@ cbcact_3_1_2 = "PART XIII Proxies Definitions 147 In this Part, intermediary mea
 "(f) a nominee of a person referred to in any of paragraphs (a) to (e); and"\
 "(g) a person who carries out functions similar to those carried out by individuals or entities referred to in any of paragraphs (a) to (e) and that holds a security registered in its name, or in the name of its nominee, on behalf of another person who is not the registered holder of the security."
 
-cbcact_3_2_1 ="PART XIII Proxies solicit or solicitation (a) includes"\
+cbcact_3_2_1 ="PART XIII Proxies solicit or solicitation 147 (a) includes"\
 "(i) a request for a proxy whether or not accompanied by or included in a form of proxy,"\
 "(ii) a request to execute or not to execute or, in Quebec, to sign or not to sign a form of proxy or to revoke a proxy,"\
 "(iii) the sending of a form of proxy or other communication to a shareholder under circumstances reasonably calculated to result in the procurement, withholding or revocation of a proxy, and"\
 "(iv) the sending of a form of proxy to a shareholder under section 149; but"
-cbcact_3_2_2 ="PART XIII Proxies solicit or solicitation (b) does not include"\
+cbcact_3_2_2 ="PART XIII Proxies solicit or solicitation 147 (b) does not include"\
 "(i) the sending of a form of proxy in response to an unsolicited request made by or on behalf of a shareholder,"\
 "(ii) the performance of administrative acts or professional services on behalf of a person soliciting a proxy,"\
 "(iii) the sending by an intermediary of the documents referred to in section 153,"\
@@ -156,13 +154,13 @@ cbcact_3_3 ="PART XIII Proxies Mandatory solicitation 149 (1) Subject to subsect
 cbcact_3_4_1 ="PART XIII Proxies Soliciting proxies 150 (1) A person shall not solicit proxies unless"\
 "(a) in the case of solicitation by or on behalf of the management of a corporation, a management proxy circular in prescribed form, either as an appendix to or as a separate document accompanying the notice of the meeting, or"\
 "(b) in the case of any other solicitation, a dissident's proxy circular in prescribed form stating the purposes of the solicitation is sent to the auditor of the corporation, to each shareholder whose proxy is solicited, to each director and, if paragraph (b) applies, to the corporation."
-cbcact_3_4_2 ="PART XIII Proxies Soliciting proxies Copy to Director (2) A person required to send a management proxy circular or dissident's proxy circular shall send concurrently a copy of it to the Director together with a statement in prescribed form, the form of proxy, any other documents for use in connection with the meeting and, in the case of a management proxy circular, a copy of the notice of meeting."
+cbcact_3_4_2 ="PART XIII Proxies Soliciting proxies Copy to Director 150 (2) A person required to send a management proxy circular or dissident's proxy circular shall send concurrently a copy of it to the Director together with a statement in prescribed form, the form of proxy, any other documents for use in connection with the meeting and, in the case of a management proxy circular, a copy of the notice of meeting."
 
 cbcact_3_5_1 ="PART XIII Proxies Duty of intermediary 153 (1) Shares of a corporation that are registered in the name of an intermediary or their nominee and not beneficially owned by the intermediary must not be voted unless the intermediary, without delay after receipt of the notice of the meeting, financial statements, management proxy circular, dissident's proxy circular and any other documents other than the form of proxy sent to shareholders by or on behalf of any person for use in connection with the meeting, sends a copy of the document to the beneficial owner and, except when the intermediary has received written voting instructions from the beneficial owner, a written request for such instructions. "
-cbcact_3_5_2 ="PART XIII Proxies Restriction on voting (2) An intermediary, or a proxyholder appointed by an intermediary, may not vote shares that the intermediary does not beneficially own and that are registered in the name of the intermediary or in the name of a nominee of the intermediary unless the intermediary or proxyholder, as the case may be, receives written voting instructions from the beneficial owner."
-cbcact_3_5_3 ="PART XIII Proxies Copies (3) A person by or on behalf of whom a solicitation is made shall provide, at the request of an intermediary, without delay, to the intermediary at the person's expense the necessary number of copies of the documents referred to in subsection (1), other than copies of the document requesting voting instructions."
-cbcact_3_5_4 ="PART XIII Proxies Instructions to intermediary (4) An intermediary shall vote or appoint a proxyholder to vote any shares referred to in subsection (1) in accordance with any written voting instructions received from the beneficial owner."
-cbcact_3_5_5 ="PART XIII Proxies Beneficial owner as proxyholder (5) If a beneficial owner so requests and provides an intermediary with appropriate documentation, the intermediary must appoint the beneficial owner or a nominee of the beneficial owner as proxyholder."
+cbcact_3_5_2 ="PART XIII Proxies Restriction on voting 153 (2) An intermediary, or a proxyholder appointed by an intermediary, may not vote shares that the intermediary does not beneficially own and that are registered in the name of the intermediary or in the name of a nominee of the intermediary unless the intermediary or proxyholder, as the case may be, receives written voting instructions from the beneficial owner."
+cbcact_3_5_3 ="PART XIII Proxies Copies 153 (3) A person by or on behalf of whom a solicitation is made shall provide, at the request of an intermediary, without delay, to the intermediary at the person's expense the necessary number of copies of the documents referred to in subsection (1), other than copies of the document requesting voting instructions."
+cbcact_3_5_4 ="PART XIII Proxies Instructions to intermediary 153 (4) An intermediary shall vote or appoint a proxyholder to vote any shares referred to in subsection (1) in accordance with any written voting instructions received from the beneficial owner."
+cbcact_3_5_5 ="PART XIII Proxies Beneficial owner as proxyholder 153 (5) If a beneficial owner so requests and provides an intermediary with appropriate documentation, the intermediary must appoint the beneficial owner or a nominee of the beneficial owner as proxyholder."
 
 
 cbcact_4_1_1 ="PART XIV Financial Disclosure Annual financial statements 155 (1) Subject to section 156, the directors of a corporation shall place before the shareholders at every annual meeting"\
