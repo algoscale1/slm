@@ -11,6 +11,8 @@ from scipy import spatial
 from nltk import word_tokenize, sent_tokenize
 from nltk.tag import pos_tag
 from gensim.models.word2vec import Word2Vec
+from nltk.corpus import wordnet as wn
+import os
 
 
 class ScoreData:
@@ -38,36 +40,12 @@ class ScoreData:
             self.tfidf = None
 
     def init(self):
+        # self.word2vec_model = Word2Vec.load('slm/app/cached_models/word2vec_model.gensim')
         self.word2vec_model = Word2Vec.load_word2vec_format('slm/app/cached_models/google.bin',binary=True)
-
-    def extracting_definitions(self,df,requested_question):
-        req_tokens = [self.generate_tokens(requested_question)]
-        req_question_vectorized = self.vectorize(req_tokens)
-        for tokens in req_tokens:
-            word = '|'.join(tokens)
-            df1 = df.loc[df['terms'].str.contains(word)]
-
-        score3 = []
-        for i, datapoint in df1.iterrows():
-            data_tokenized3 = [self.generate_tokens(datapoint.topic_information)]
-            data_vectorized3 = self.vectorize(data_tokenized3)
-            similarity3 = self.get_vec_similarity(data_vectorized3, req_question_vectorized)
-            score3.append(similarity3)
-
-        df1["score"] = score3
-        df1 = df1.sort_values(by=["score"], ascending=False)
-        df1 = df1.loc[df1.score > 0.00]
-        df1 = df1.sort_values(by=["score"], ascending=False)
-        df1.reset_index(inplace=True, drop=True)
-        df1 = df1[['topic', 'topic_information','score']]
-        return df1
-
 
     def calculate_score_word2vec(self,df,requested_question):
        if self.word2vec_model is None:
            self.init()
-       definition_df = self.extracting_definitions(df,requested_question)
-
        sent_tokens = self.data_parser_pos_tagging(requested_question)
        req_question_vectorized = self.create_avg_sentence_vector(sent_tokens)
        score1 = []
@@ -86,13 +64,10 @@ class ScoreData:
        df = self.tfidf_scoring(df,requested_question)
        df["score"] = df["score_w2v"] + df["score_tfidf"]
        df = df.loc[df.score > 0.55]
-       df.drop(['score_w2v', 'score_tfidf','terms'], axis=1, inplace=True)
+       df.drop(['score_w2v', 'score_tfidf'], axis=1, inplace=True)
        df = df.sort_values(by=["score"], ascending=False)
        df.reset_index(inplace=True, drop=True)
-       final_df = pd.concat([definition_df, df])
-       final_df.drop_duplicates(subset=['topic_information'], keep='first', inplace=True)
-       final_df.reset_index(inplace=True, drop=True)
-       return "done"
+       return df
 
     def tfidf_scoring(self,df,requested_question):
        req_question_tokenized = [self.create_preprocessed_tokens(requested_question)]
@@ -145,20 +120,8 @@ class ScoreData:
         tsx_manual_df = self.standarize_df(tsx_manual_df)
 
         complete_df = pd.concat([ni51_df,ni54_df,ni58_df,osact_df,cbcact_df,cbcr_df,form1_df,form5_df,form6_df,notice_cbc_df,notice_tsx_df,tsx_manual_df],axis = 0)
-        complete_df_with_def_terms = self.adding_definition_terms(complete_df)
 
-        return complete_df_with_def_terms
-
-    def adding_definition_terms(self,df):
-        terms = []
-        for row in df.topic_information:
-            t = row.split("means", 1)[0]
-            t = self.extract_terms_between_quotes(t)
-            terms.append(t)
-        df['terms'] = terms
-        df['terms'] = df['terms'].str.replace(r'[^\w\s]', ' ')
-        return df
-
+        return complete_df
 
     def standarize_df(self,df):
         df.drop(df.index[[0]],inplace= True)
@@ -279,7 +242,3 @@ class ScoreData:
         sim = len(set(l1).intersection(l2))
         return sim
 
-    @staticmethod
-    def extract_terms_between_quotes(text):
-        terms = re.findall(r'\"(.+?)\"', text.lower())
-        return ",".join(terms)

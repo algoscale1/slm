@@ -34,19 +34,15 @@ def get_answers(request):
 
     # filtering answers on the basis of scores using word2vec model
     answers_df = score.calculate_score_word2vec(complete_data, requested_question)
-
-    # converting df datapoints to a dictionary
+    # converting df data points to a dictionary
     headings = answers_df.topic.values.tolist()
     answers = answers_df.topic_information.values.tolist()
-    scores = answers_df.score.values.tolist()
-
-    heading_with_answers = {}
-    for heading, answer in zip(headings, answers):
-        heading_with_answers[heading] = answer
-    if len(heading_with_answers) == 0:
+    heading_with_answers = {"headings": headings, "answers": answers}
+    if len(headings) == 0:
         return HttpResponse("no results found")
     else:
         return HttpResponse(json.dumps(heading_with_answers))
+
 
 @csrf_exempt
 def home(request):

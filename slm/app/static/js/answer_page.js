@@ -25,20 +25,24 @@ function getAnswer() {
         }
         else{
         var answers = JSON.parse(response);
-        console.log(answers,"ans");
         var text_area = $("#result_header");
         jQuery("#search_tag").text("Searched results are:")
             jQuery("#header_space").text("")
             jQuery("#answer_space").text("")
+            headers_list = answers.headings
+            answers_list  = answers.answers
 
         // Displaying each heading of the answer
-            $.each(answers, function(header, answer) {
-            answer = answer.replace(/'/g, "\\'");
-            header = header.replace(/'/g, "\\'");
-                // on clicking this show answer() will be called and full answer will be displayed
-                text_area.append('<li class="p-5" title="Click Here To read complete Answer"' +
+        jQuery.each(headers_list, function(i, item) {
+
+            var header = headers_list[i].replace(/'|"/g, "\\'");
+            var answer = answers_list[i].replace(/'|"/g, "\\'");
+
+            // on clicking this show answer() will be called and full answer will be displayed
+            text_area.append('<li class="p-5" title="Click Here To read complete Answer"' +
                         ' onclick="showAnswer('+"'"+header+"'"+','+"'"+answer+"'"+')">'+header+'</li>');
-            });
+         });
+
         }
 
 
