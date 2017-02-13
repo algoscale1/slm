@@ -16,9 +16,12 @@ import os
 
 
 class ScoreData:
+#This is a class for scoring data
     def __init__(self):
         self.stopwords = stopwords.words('english')
+        # Lemmatizer
         self.lmtzr = WordNetLemmatizer()
+        # Stemmer
         self.stemmer = PorterStemmer()
         self.word2vec_model = None
         self.words = re.compile(r"\w+", re.I)
@@ -40,54 +43,84 @@ class ScoreData:
             self.tfidf = None
 
     def init(self):
-        # self.word2vec_model = Word2Vec.load('slm/app/cached_models/word2vec_model.gensim')
+        # Google Word2Vec Corpus Loaded
         self.word2vec_model = Word2Vec.load_word2vec_format('slm/app/cached_models/google.bin',binary=True)
 
     def calculate_score_word2vec(self,df,requested_question):
-       if self.word2vec_model is None:
-           self.init()
-       sent_tokens = self.data_parser_pos_tagging(requested_question)
-       req_question_vectorized = self.create_avg_sentence_vector(sent_tokens)
-       score1 = []
-       for i, datapoint in df.iterrows():
-           pos_tags_all = self.data_parser_pos_tagging(datapoint.topic_information)
-           pos_tags = self.data_parser_pos_tagging(datapoint.topic.lower())
-           topic_keywords = self.generate_tokens(datapoint.topic.lower())
-           data_vectorized1 = self.create_avg_sentence_vector(pos_tags_all + pos_tags)
-           similarity1 = self.get_vec_similarity(data_vectorized1, req_question_vectorized)
-           keyword_similarity = self.get_common_tokens(sent_tokens, topic_keywords)
-           score1.append(similarity1 + (keyword_similarity / 50))
+        """
+        To calculate score according to Word2Vec model
+        :param df: complete Dataframe
+        :param requested_question: Input question requested by the user
+        :return: dataframe after adding TF-IDF scores
+        """
+        if self.word2vec_model is None:
+            self.init()
+        sent_tokens = self.data_parser_pos_tagging(requested_question)
+        req_question_vectorized = self.create_avg_sentence_vector(sent_tokens)
+        score1 = []
+        for i, datapoint in df.iterrows():
+            pos_tags_all = self.data_parser_pos_tagging(datapoint.topic_information)
+            pos_tags = self.data_parser_pos_tagging(datapoint.topic.lower())
+            topic_keywords = self.generate_tokens(datapoint.topic.lower())
+            data_vectorized1 = self.create_avg_sentence_vector(pos_tags_all + pos_tags)
+            similarity1 = self.get_vec_similarity(data_vectorized1, req_question_vectorized)
+            keyword_similarity = self.get_common_tokens(sent_tokens, topic_keywords)
+            score1.append(similarity1 + (keyword_similarity / 50))
 
-       df["score_w2v"] = score1
-       df = df.sort_values(by=["score_w2v"], ascending=False)
-       df = df.loc[df.score_w2v > 0.40]
-       df = self.tfidf_scoring(df,requested_question)
-       df["score"] = df["score_w2v"] + df["score_tfidf"]
-       df = df.loc[df.score > 0.55]
-       df.drop(['score_w2v', 'score_tfidf'], axis=1, inplace=True)
-       df = df.sort_values(by=["score"], ascending=False)
-       df.reset_index(inplace=True, drop=True)
-       return df
+        df["score_w2v"] = score1
+        df = df.sort_values(by=["score_w2v"], ascending=False)
+        # Setting Threshold as 0.4 on word2vec results
+        df = df.loc[df.score_w2v > 0.40]
+        df = self.tfidf_scoring(df,requested_question)
+        df["score"] = df["score_w2v"] + df["score_tfidf"]
+        # Setting overall threshold as 0.55 after combining both the scores
+        df = df.loc[df.score > 0.55]
+        df.drop(['score_w2v', 'score_tfidf'], axis=1, inplace=True)
+        df = df.sort_values(by=["score"], ascending=False)
+        df.reset_index(inplace=True, drop=True)
+        return df
 
     def tfidf_scoring(self,df,requested_question):
-       req_question_tokenized = [self.create_preprocessed_tokens(requested_question)]
-       req_question_vectorized = self.vectorize(req_question_tokenized)
-       score2 = []
-       for i, datapoint in df.iterrows():
-           data_tokenized2 = [self.create_preprocessed_tokens(datapoint.topic_information)]
-           data_vectorized2 = self.vectorize(data_tokenized2)
-           similarity2 = self.get_vec_similarity(data_vectorized2, req_question_vectorized)
-           score2.append(similarity2)
-       df["score_tfidf"] = score2
-       df = df.sort_values(by=["score_tfidf"], ascending=False)
-       df = df.loc[df.score_tfidf > 0.00]
-       df = df.sort_values(by=["topic"], ascending=False)
-       df.reset_index(inplace=True, drop=True)
-       return df
+        """
+        To calculate score according to TF-IDF model
+        :param df: Dataframe received from word2vec model
+        :param requested_question: Input question requested by the user
+        :return: dataframe after adding TF-IDF scores
+        """
+        req_question_tokenized = [self.create_preprocessed_tokens(requested_question)]
+        req_question_vectorized = self.vectorize(req_question_tokenized)
+        score2 = []
+        for i, datapoint in df.iterrows():
+            data_tokenized2 = [self.create_preprocessed_tokens(datapoint.topic_information)]
+            data_vectorized2 = self.vectorize(data_tokenized2)
+            similarity2 = self.get_vec_similarity(data_vectorized2, req_question_vectorized)
+            score2.append(similarity2)
+        df["score_tfidf"] = score2
+        df = df.sort_values(by=["score_tfidf"], ascending=False)
+        df = df.loc[df.score_tfidf > 0.00]
+        df = df.sort_values(by=["topic"], ascending=False)
+        df.reset_index(inplace=True, drop=True)
+        return df
 
 
-    def scoring_tree_data(self,cbcr_tree,osact_tree,form1_tree, ni58_tree, notice_tsx_tree, notice_cbc_tree,
+    def converting_trees_to_df(self,cbcr_tree,osact_tree,form1_tree, ni58_tree, notice_tsx_tree, notice_cbc_tree,
                                      ni51_tree,cbcact_tree,ni54_tree,form5_tree,form6_tree,tsx_manual_tree):
+        """
+        Function to convert all trees into dataframes
+        :param cbcr_tree: Canada Business Corporations Regulations tree
+        :param osact_tree: Ontario Securities Act tree
+        :param form1_tree: Form 58-101F1 Corporate Governance Disclosure tree
+        :param ni58_tree: National Instrument 58-101 Disclosure of Corporate Governance Practices tree
+        :param notice_tsx_tree: TSX Staff Notice 2015-0002 (September 10, 2015) - Subsections 461.1-461.4 and Section 464 Director Elections and Annual Meetings tree
+        :param notice_cbc_tree: Notice concerning notice-and-access regime recently adopted by the Canadian Securities Administrators tree
+        :param ni51_tree: National Instrument 51-102 Continuous Disclosure Obligations tree
+        :param cbcact_tree: Canada Business Corporations Act tree
+        :param ni54_tree: National Instrument 54-101 Communication with Beneficial Owners of Securities of a Reporting Issuer tree
+        :param form5_tree: Form 51-102F5 Information Circular tree
+        :param form6_tree: Form 51-102F6 Statement of Executive Compensation tree
+        :param tsx_manual_tree: TSX Company Manual tree
+        :return: concatenated complete dataframe
+        """
         all_trees = [cbcr_tree,osact_tree,form1_tree, ni58_tree, notice_tsx_tree, notice_cbc_tree,
                                      ni51_tree,cbcact_tree,ni54_tree,form5_tree,form6_tree,tsx_manual_tree]
         tokenized_trees = [self.create_preprocessed_tokens(node) for tree in all_trees for node in tree]
@@ -120,10 +153,14 @@ class ScoreData:
         tsx_manual_df = self.standarize_df(tsx_manual_df)
 
         complete_df = pd.concat([ni51_df,ni54_df,ni58_df,osact_df,cbcact_df,cbcr_df,form1_df,form5_df,form6_df,notice_cbc_df,notice_tsx_df,tsx_manual_df],axis = 0)
-
         return complete_df
 
     def standarize_df(self,df):
+        """
+        Standardize the dataframe
+        :param df: input dataframe
+        :return: dataframe in standardized format
+        """
         df.drop(df.index[[0]],inplace= True)
         df.reset_index(drop= True,inplace= True)
         return df
@@ -132,7 +169,6 @@ class ScoreData:
         """
         Create vector from word2vec model by sentence average method
         :param words: input requested question in the form of list
-        :param model: word2vec model
         :return: sentence vector in the form of array
         """
         sent_vector = np.zeros(self.word2vec_model.vector_size, )
@@ -147,12 +183,22 @@ class ScoreData:
         return sent_vector
 
     def create_preprocessed_tokens(self,raw_sentence):
+        """
+        tokenize sentence for tf-idf model
+        :param raw_sentence: raw_sentence in the form of string
+        :return: tokenize sentence in list form
+        """
         tokens = [self.lmtzr.lemmatize(word.lower()) for word in re.findall(self.words, raw_sentence)
                   if word.lower() not in self.stopwords]
         tokens = [self.stemmer.stem(word) for word in tokens if len(word) > 2]
         return tokens
 
     def generate_tokens(self, raw_sentence):
+        """
+        tokenize sentence into words
+        :param raw_sentence: raw sentence in the  form of string
+        :return: tokenized sentence in list form
+        """
         tokens = [word.lower() for word in re.findall(self.words, raw_sentence) if
                   word.lower() not in self.stopwords]
         return tokens
@@ -161,16 +207,13 @@ class ScoreData:
     def train_ngrams_models(self,sent_tokens):
         """
         Train bigrams,trigrams and dictionary and save them in cached models
-        :param df: user's data-frame
-        :param function_type: function type for which the analysis has to be done
+        :param sent_tokens: concatenated overall complete dataframe
         """
         bigrams = Phrases(sentences=sent_tokens, min_count=1, threshold=1)
         trigrams = Phrases(sentences=bigrams[sent_tokens], min_count=1, threshold=1)
         sent_tokens_transformed = trigrams[bigrams[sent_tokens]]
         d = corpora.Dictionary(sent_tokens_transformed)
         bow_corpus = [d.doc2bow(sent_tokens) for sent_tokens in sent_tokens_transformed]
-        # d.filter_extremes(no_below=3, no_above=0.8)
-        # d.compactify()
         tfidf = TfidfModel(corpus=bow_corpus, id2word=d)
         try:
             bigrams.save('slm/app/cached_models/bigrams.gensim')
@@ -182,9 +225,9 @@ class ScoreData:
 
     def vectorize(self,sent_token):
         """
-        Function to vectorize titles of a user
-        :param df: titles data-frame of a user
-        :return: list of BOW transformed corpus for designation
+        Function to vectorize the data
+        :param sent_token: input tokenized data
+        :return: list of BOW (Bag of Words) transformed corpus
         """
         sent_token = self.trigrams[self.bigrams[sent_token]]
         sent_vector = [self.dictionary.doc2bow(token) for token in sent_token]
@@ -193,6 +236,12 @@ class ScoreData:
         return sent_vector.transpose()
 
     def get_vec_similarity(self, v1, v2):
+        """
+        calculates vectors similarity
+        :param v1: vector
+        :param v2: vector
+        :return: a float value which represents similarity
+        """
         if len(np.nonzero(v1)[0]) == 0 or len(np.nonzero(v2)[0]) == 0:
             sim = 0.0
         else:
@@ -201,9 +250,9 @@ class ScoreData:
 
     def data_parser_pos_tagging(self, sentences):
         """
-        Parse data for POS
-        :param sentences: sentence of Q/A in the form of string
-        :return: POS tags Tree of the input
+        Parse data for Parts-Of-Speech
+        :param sentences: sentence in the form of string
+        :return: POS tags list of the input
         """
         pos_noun_tags= []
         sentences_tokenized = sent_tokenize(sentences)
@@ -215,10 +264,10 @@ class ScoreData:
 
     def pos_tagging(self, sentence, pos_noun_tags):
         """
-        To POS tag sentence for noun, adjective, verbs
-        :param sentence:
+        To POS tag sentence for nouns
+        :param sentence: input sentence
         :param pos_noun_tags: Noun tag list
-        :return: List of Nouns, Adjective and Verbs from current sentence added
+        :return: List of Nouns from current sentence
         """
         for word, pos in pos_tag(sentence):
             if pos in ['NN', "NNP", "NNS"]:
@@ -230,7 +279,7 @@ class ScoreData:
         calculates intersection of two list of words
         :param list1: list of words
         :param list2: list of words
-        :return: lenght of common words
+        :return: length of common words
         """
         list2 = [word for word in list2]
         l1 = []

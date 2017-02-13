@@ -27,7 +27,7 @@ def get_answers(request):
         tree.display_tree(cbcr, osact, form1, ni58, notice_tsx, notice_cbc, ni51, cbcact, ni54, form5, form6,
                           tsx_manual)
 
-    complete_data = score.scoring_tree_data(cbcr_tree, osact_tree, form1_tree, ni58_tree, notice_tsx_tree,
+    complete_data = score.converting_trees_to_df(cbcr_tree, osact_tree, form1_tree, ni58_tree, notice_tsx_tree,
                                             notice_cbc_tree,
                                             ni51_tree, cbcact_tree, ni54_tree, form5_tree, form6_tree,
                                             tsx_manual_tree)
