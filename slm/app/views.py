@@ -69,3 +69,37 @@ def db(request):
         continuous_disclosure = Header(title=row['heading']).save()
         executive_officer.header.connect(continuous_disclosure)
     return HttpResponse("done")
+
+from .models import session
+
+
+@csrf_exempt
+def get_terms(request):
+    if request.method =='POST':
+        title = json.loads(request.body.decode("utf-8"))['title']
+        # title = "'National Instrument 51-102 Continuous Disclosure Obligations'"
+        result = session.run("MATCH (:Header{title:"+title+"})<-[:DEFINED_IN]-(Term) RETURN Term.name;")
+
+        terms = []
+        for record in result:
+              terms.append(record[0])
+
+        session.close()
+        results = {"terms": terms}
+        return HttpResponse(json.dumps(results))
+
+
+@csrf_exempt
+def get_headers(request):
+    if request.method =='POST':
+        term  = json.loads(request.body.decode("utf-8"))['term']
+        term = "'form of proxy'"
+        result = session.run("MATCH (Term{name:"+term+"})--(Header) RETURN Header.title;")
+
+        headers= []
+        for record in result:
+              headers.append(record[0])
+
+        session.close()
+        results = {"headers": headers}
+        return HttpResponse(json.dumps(results))
