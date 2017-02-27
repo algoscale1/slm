@@ -62,7 +62,7 @@ def home(request):
 @csrf_exempt
 def db(request):
 
-    df = pd.read_csv('/home/neeraj/Downloads/def.csv')
+    df = pd.read_csv('/home/ubuntu/def.csv')
     for index,row in df.iterrows():
 
         executive_officer = Term(name=row['definition term']).save()
