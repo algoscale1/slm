@@ -14,8 +14,8 @@ function getAnswer() {
         async: false
     }).done(function (response) {
         if (response  =="no results found"){
-        jQuery("#search_tag").text("No results found");
-            jQuery("#header_space").attr("hidden","true");
+        jQuery("#search_tag").text("No results found")
+            jQuery("#header_space").attr("hidden","true")
             jQuery("#answer_space").attr("hidden","true")
 
 
@@ -24,12 +24,12 @@ function getAnswer() {
         else{
         var answers = JSON.parse(response);
         var text_area = $("#result_header");
-        jQuery("#search_tag").text("Searched results are:");
-            jQuery("#header_space").text("");
-            jQuery("#answer_space").text("");
-            headers_list = answers.headings;
-            answers_list  = answers.answers;
-            terms_list = answers.terms;
+        jQuery("#search_tag").text("Searched results are:")
+            jQuery("#header_space").text("")
+            jQuery("#answer_space").text("")
+            headers_list = answers.headings
+            answers_list  = answers.answers
+            terms_list = answers.terms
 
         // Displaying each heading of the answer
         jQuery.each(headers_list, function(i, item) {
@@ -37,17 +37,24 @@ function getAnswer() {
             var header = headers_list[i].replace(/'|"/g, "\\'");
             var answer = answers_list[i].replace(/'|"/g, "\\'");
 
+            var terms = terms_list[i]
+
             var arr = [];
             arr.push(terms_list[i]);
 
-            var terms= JSON.stringify(arr);
+            var te= JSON.stringify(arr);
+                        console.log(te,"teeeeeeeeeeeeeeeeee")
 
+
+            // on clicking this show answer() will be called and full answer will be displayed
+            //text_area.append('<li class="p-5" title="Click Here To read complete Answer"' +
+            //            ' onclick="showAnswer('+"'"+header+"'"+','+"'"+answer+"'"+',te'+""+')">'+header+'</li>');
             text_area.append("<li class='p-5' data-header='"+header+"' " +
-                "data-arr='"+terms+"' data-ans='"+answer+"' title='Click Here To read complete Answer'>"+header+"</li>")
+                "data-arr='"+te+"' data-ans='"+answer+"' title='Click Here To read complete Answer'>"+header+"</li>")
 
          });
         $(".p-5").on("click" ,function(){
-
+            console.log(this);
             var _this = $(this);
             var arr = _this.data("arr");
             var ans = _this.data("ans");
@@ -55,15 +62,15 @@ function getAnswer() {
 
             var answer_space = $("#answer_space");
            var header_space = $("#header_space");
-           answer_space.text(ans);
-           header_space.text(header);
-
-            var terms = arr[0];
+           answer_space.text(ans)
+           header_space.text(header)
+            var terms = arr[0]
 
             jQuery.each(terms, function(i, item) {
 
-                var term = terms[i];
+                var term = terms[i]
                  $("#answer_space:contains("+term+")").html(function(_, html) {
+
            return html.replace(new RegExp(term, 'g'), '<span class="p-6" data-term="'+term+'" ><b>'+term+'</b></span>');
            });
 
@@ -71,10 +78,10 @@ function getAnswer() {
     });
 
     $('.p-6').on('click', function(){
-
         jQuery("#container").empty()
-        var _this = $(this);
-        var term = _this.data("term");
+        var _this = $(this)
+        var term = _this.data("term")
+
 
         jQuery.ajax({
         url: '/slm/getHeaders/',
@@ -83,7 +90,7 @@ function getAnswer() {
         datatype: "json",
         async: false
     }).done(function (response) {
-       console.log(response)
+
             var headers = JSON.parse(response).headers
             var node = [];
             var edge = [];
@@ -101,9 +108,12 @@ function getAnswer() {
             jQuery("#container").removeAttr("hidden");
             showGraph(dataset)
 
+
+
+            })
+
         })
-    })
-        })
+  })
         }
 
 
@@ -111,4 +121,29 @@ function getAnswer() {
 
 }
 
+// this function is used to show a selected heading to its full answer.
+function showAnswer(header, answer, jsonString) {
+           var answer_space = $("#answer_space");
+           var header_space = $("#header_space");
+           answer_space.text(answer)
+           header_space.text(header)
+    var terms = JSON.Parse(jsonString)
 
+    var array = JSON.parse(jsonString);
+    console.log(array,"uuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu")
+           var x = 'mai'
+           $("#answer_space:contains('mai')").html(function(_, html) {
+           return html.replace(/(mai)/g, '<span id='+"'"+x+"'"+' ><b>mai</b></span>');
+           });
+    $(document).ready(function() {
+    $('#mai').on('click', function(){
+        showHearders('mai');
+    });
+});
+
+}
+
+
+function showHearders(term){
+    alert("hola")
+}
