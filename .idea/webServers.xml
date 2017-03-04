@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="48824541-60b5-42e5-a42e-ef0b81adfaf8" name="slm" url="http://54.173.236.181">
+        <fileTransfer host="54.173.236.181" port="22" privateKey="$PROJECT_DIR$/../../../slmkeys/slm_new.pem" accessType="SFTP" username="ubuntu" keyPair="true">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" />
+          </advancedOptions>
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>

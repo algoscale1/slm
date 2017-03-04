@@ -11,9 +11,22 @@ from slm.app.tree_structures.nis import ni58, ni51, ni54
 from slm.app.models import Header, Term
 import csv
 import pandas as pd
+from slm.app.services.graph_db_interaction import GraphDb
 
 tree = building_tree.BuildTree()
 score = score_calculator.ScoreData()
+
+
+
+
+@csrf_exempt
+def home(request):
+    """
+    returns home page for querying questions
+    :param request:
+    :return:
+    """
+    return render(request, template_name="searchPage.html")
 
 
 @csrf_exempt
@@ -46,17 +59,13 @@ def get_answers(request):
     if len(headings) == 0:
         return HttpResponse("no results found")
     else:
-        return HttpResponse(json.dumps(heading_with_answers))
+        terms_list = []
+        for heading in heading_with_answers['headings']:
+            terms_list.append(GraphDb.get_terms_db(heading))
+        heading_with_answers['terms'] = terms_list
 
 
-@csrf_exempt
-def home(request):
-    """
-    returns home page for querying questions
-    :param request:
-    :return:
-    """
-    return render(request, template_name="searchPage.html")
+    return HttpResponse(json.dumps(heading_with_answers))
 
 
 @csrf_exempt
@@ -70,21 +79,16 @@ def db(request):
         executive_officer.header.connect(continuous_disclosure)
     return HttpResponse("done")
 
-from .models import session
+
 
 
 @csrf_exempt
 def get_terms(request):
     if request.method =='POST':
-        title = json.loads(request.body.decode("utf-8"))['title']
+        title = request.POST['header']
         # title = "'National Instrument 51-102 Continuous Disclosure Obligations'"
-        result = session.run("MATCH (:Header{title:"+title+"})<-[:DEFINED_IN]-(Term) RETURN Term.name;")
+        terms = GraphDb.get_terms_db(title)
 
-        terms = []
-        for record in result:
-              terms.append(record[0])
-
-        session.close()
         results = {"terms": terms}
         return HttpResponse(json.dumps(results))
 
@@ -92,14 +96,9 @@ def get_terms(request):
 @csrf_exempt
 def get_headers(request):
     if request.method =='POST':
-        term  = json.loads(request.body.decode("utf-8"))['term']
-        term = "'form of proxy'"
-        result = session.run("MATCH (Term{name:"+term+"})--(Header) RETURN Header.title;")
+        term = request.POST['term']
 
-        headers= []
-        for record in result:
-              headers.append(record[0])
+        headers = GraphDb.get_headers_db(repr(str(term)))
 
-        session.close()
         results = {"headers": headers}
         return HttpResponse(json.dumps(results))
