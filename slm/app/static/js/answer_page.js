@@ -35,7 +35,7 @@ function getAnswer() {
         jQuery.each(headers_list, function(i, item) {
 
             var header = headers_list[i].replace(/"|'/g, '\\"');
-            var answer = answers_list[i].replace(/"|"/g,'\\"');
+            //var answer = answers_list[i].replace(/"|"/g,'\\"');
 
             var terms = terms_list[i]
 
