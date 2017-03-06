@@ -14,8 +14,8 @@ function getAnswer() {
         async: false
     }).done(function (response) {
         if (response  =="no results found"){
-        jQuery("#search_tag").text("No results found")
-            jQuery("#header_space").attr("hidden","true")
+        jQuery("#search_tag").text("No results found");
+            jQuery("#header_space").attr("hidden","true");
             jQuery("#answer_space").attr("hidden","true")
 
 
@@ -24,7 +24,7 @@ function getAnswer() {
         else{
         var answers = JSON.parse(response);
         var text_area = $("#result_header");
-        jQuery("#search_tag").text("Searched results are:")
+        jQuery("#search_tag").text("Searched results are:");
             jQuery("#header_space").text("");
             jQuery("#answer_space").text("");
             headers_list = answers.headings;
@@ -49,8 +49,8 @@ function getAnswer() {
             // on clicking this show answer() will be called and full answer will be displayed
             //text_area.append('<li class="p-5" title="Click Here To read complete Answer"' +
             //            ' onclick="showAnswer('+"'"+header+"'"+','+"'"+answer+"'"+',te'+""+')">'+header+'</li>');
-            text_area.append("<li class='p-5' data-header='"+header+"' " +
-                "data-arr='"+arr_string+"' data-ans='"+answer+"' title='Click Here To read complete Answer'>"+header+"</li>")
+            text_area.append("<li class='p-5' data-header='"+"'"+header+"'"+"' " +
+                "data-arr='"+arr_string+"' data-ans='"+"'"+answer+"'"+"' title='Click Here To read complete Answer'>"+header+"</li>")
 
          });
         $(".p-5").on("click" ,function(){
