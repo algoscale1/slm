@@ -36,6 +36,7 @@ def get_answers(request):
     :param request: http request which contains the requested question
     :return: dictionary of answers
     """
+    '''
     requested_question = request.POST['question']
 
     # construction of trees from data
@@ -58,23 +59,24 @@ def get_answers(request):
     heading_with_answers = {"headings": headings, "answers": answers}
     if len(headings) == 0:
         return HttpResponse("no results found")
-    else:
-        terms_list = []
-        for heading in heading_with_answers['headings']:
-            heading = repr(str(heading))
-            terms_list.append(GraphDb.get_terms_db(heading))
-        heading_with_answers['terms'] = terms_list
-        print("dict of result", heading_with_answers)
-
-    # heading_with_answers = {"headings":['Form 51-102F6 Statement of Executive Compensation'
-    #                                     ],
-    #                         "answers":["ceo cfo plan share-based award hu is pal yaha"]}
-    # terms_list = []
-    # for heading in heading_with_answers['headings']:
-    #     heading = repr(str(heading))
-    #     terms_list.append(GraphDb.get_terms_db(heading))
-    # heading_with_answers['terms'] = terms_list
-    # print("dict of result", heading_with_answers)
+    # else:
+        # terms_list = []
+        # for heading in heading_with_answers['headings']:
+        #     heading = repr(str(heading))
+        #     terms_list.append(GraphDb.get_terms_db(heading))
+        # heading_with_answers['terms'] = terms_list
+        # print("dict of result", heading_with_answers)
+    #
+    '''
+    heading_with_answers = {"headings":['Form 51-102F6 Statement of Executive Compensation'
+                                        ],
+                            "answers":["ceo cfo plan share-based award hu is pal yaha"]}
+    terms_list = []
+    for heading in heading_with_answers['headings']:
+        heading = repr(str(heading))
+        terms_list.append(GraphDb.get_terms_db(heading))
+    heading_with_answers['terms'] = terms_list
+    print("dict of result", heading_with_answers)
     return HttpResponse(json.dumps(heading_with_answers))
 
 

@@ -42,15 +42,15 @@ function getAnswer() {
             var arr = [];
             arr.push(terms_list[i]);
 
-            var te= JSON.stringify(arr);
-                        console.log(te,"teeeeeeeeeeeeeeeeee")
+            var arr_string= JSON.stringify(arr);
+            console.log(arr_string,"teeeeeeeeeeeeeeeeee")
 
 
             // on clicking this show answer() will be called and full answer will be displayed
             //text_area.append('<li class="p-5" title="Click Here To read complete Answer"' +
             //            ' onclick="showAnswer('+"'"+header+"'"+','+"'"+answer+"'"+',te'+""+')">'+header+'</li>');
             text_area.append("<li class='p-5' data-header='"+header+"' " +
-                "data-arr='"+te+"' data-ans='"+answer+"' title='Click Here To read complete Answer'>"+header+"</li>")
+                "data-arr='"+arr_string+"' data-ans='"+answer+"' title='Click Here To read complete Answer'>"+header+"</li>")
 
          });
         $(".p-5").on("click" ,function(){
@@ -78,9 +78,9 @@ function getAnswer() {
     });
 
     $('.p-6').on('click', function(){
-        jQuery("#container").empty()
-        var _this = $(this)
-        var term = _this.data("term")
+        jQuery("#container").empty();
+        var _this = $(this);
+        var term = _this.data("term");
 
 
         jQuery.ajax({
@@ -90,21 +90,21 @@ function getAnswer() {
         datatype: "json",
         async: false
     }).done(function (response) {
-
+            
             var headers = JSON.parse(response).headers
             var node = [];
             var edge = [];
             var dataset = {};
 
             var  _dict = {id:0,name:term,group:0}
-            node.push(_dict)
+            node.push(_dict);
             for(i in headers) {
 
                 node.push({id: 1, name: headers[i], group: "1"})
                 edge.push({relation:"Defined in",source: 0, target: 1,"group":1})
             }
-            dataset.nodes = node
-            dataset.edges = edge
+            dataset.nodes = node;
+            dataset.edges = edge;
             jQuery("#container").removeAttr("hidden");
             showGraph(dataset)
 
@@ -121,29 +121,3 @@ function getAnswer() {
 
 }
 
-// this function is used to show a selected heading to its full answer.
-function showAnswer(header, answer, jsonString) {
-           var answer_space = $("#answer_space");
-           var header_space = $("#header_space");
-           answer_space.text(answer)
-           header_space.text(header)
-    var terms = JSON.Parse(jsonString)
-
-    var array = JSON.parse(jsonString);
-    console.log(array,"uuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu")
-           var x = 'mai'
-           $("#answer_space:contains('mai')").html(function(_, html) {
-           return html.replace(/(mai)/g, '<span id='+"'"+x+"'"+' ><b>mai</b></span>');
-           });
-    $(document).ready(function() {
-    $('#mai').on('click', function(){
-        showHearders('mai');
-    });
-});
-
-}
-
-
-function showHearders(term){
-    alert("hola")
-}
