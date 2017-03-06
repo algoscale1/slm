@@ -25,17 +25,17 @@ function getAnswer() {
         var answers = JSON.parse(response);
         var text_area = $("#result_header");
         jQuery("#search_tag").text("Searched results are:")
-            jQuery("#header_space").text("")
-            jQuery("#answer_space").text("")
-            headers_list = answers.headings
-            answers_list  = answers.answers
-            terms_list = answers.terms
+            jQuery("#header_space").text("");
+            jQuery("#answer_space").text("");
+            headers_list = answers.headings;
+            answers_list  = answers.answers;
+            terms_list = answers.terms;
 
         // Displaying each heading of the answer
         jQuery.each(headers_list, function(i, item) {
 
-            var header = headers_list[i].replace(/'|"/g, "\\'");
-            var answer = answers_list[i].replace(/'|"/g, "\\'");
+            var header = headers_list[i].replace(/"|'/g, '\\"');
+            var answer = answers_list[i].replace(/"|"/g,'\\"');
 
             var terms = terms_list[i]
 
