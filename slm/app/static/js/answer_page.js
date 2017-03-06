@@ -60,11 +60,13 @@ function getAnswer() {
             var ans = _this.data("ans");
             var header = _this.data("header");
 
+           console.log(arr,"array of terms");
+
             var answer_space = $("#answer_space");
            var header_space = $("#header_space");
-           answer_space.text(ans)
-           header_space.text(header)
-            var terms = arr[0]
+           answer_space.text(ans);
+           header_space.text(header);
+            var terms = arr[0];
 
             jQuery.each(terms, function(i, item) {
 
