@@ -1,7 +1,7 @@
 
 // this function is used to get the answers for the requested question
 function getAnswer() {
-    $("#container").attr("hidden","true");
+    //$("#container").attr("hidden","true");
     jQuery(".mt-0 ").removeAttr("hidden");    // use to show "searched results are" above headings
     $("#result_header").find('li').remove() ;  // use to remove the headings for the answer
     $("#answer_space").contents().filter(function(){ return this.nodeType != 1; }).remove();     // use to remove headings+answer
@@ -34,8 +34,8 @@ function getAnswer() {
         // Displaying each heading of the answer
         jQuery.each(headers_list, function(i, item) {
 
-            var header = headers_list[i].replace(/"|'/g, '\\"');
-            //var answer = answers_list[i].replace(/"|"/g,'\\"');
+            var header = headers_list[i].replace(/"/g, "'");
+            //var answer = answers_list[i].replace(/"/g, "'");
 
             var terms = terms_list[i]
 
@@ -43,18 +43,19 @@ function getAnswer() {
             arr.push(terms_list[i]);
 
             var arr_string= JSON.stringify(arr);
-            console.log(arr_string,"teeeeeeeeeeeeeeeeee")
+
 
 
             // on clicking this show answer() will be called and full answer will be displayed
             //text_area.append('<li class="p-5" title="Click Here To read complete Answer"' +
             //            ' onclick="showAnswer('+"'"+header+"'"+','+"'"+answer+"'"+',te'+""+')">'+header+'</li>');
-            text_area.append("<li class='p-5' data-header='"+"'"+header+"'"+"' " +
-                "data-arr='"+arr_string+"' data-ans='"+"'"+answer+"'"+"' title='Click Here To read complete Answer'>"+header+"</li>")
+            text_area.append("<li class='p-5' data-header='"+header+"' " +
+                "data-arr='"+arr_string+"' data-ans=\""+answers_list[i]+"\" title='Click Here To read complete Answer'>"+header+"</li>")
 
          });
         $(".p-5").on("click" ,function(){
-            console.log(this);
+            jQuery("#container").empty();
+
             var _this = $(this);
             var arr = _this.data("arr");
             var ans = _this.data("ans");
@@ -80,7 +81,7 @@ function getAnswer() {
     });
 
     $('.p-6').on('click', function(){
-        jQuery("#container").empty();
+
         var _this = $(this);
         var term = _this.data("term");
 
@@ -92,24 +93,24 @@ function getAnswer() {
         datatype: "json",
         async: false
     }).done(function (response) {
-            
-            var headers = JSON.parse(response).headers
+            jQuery("#container").empty();
+           var headers = JSON.parse(response).headers;
             var node = [];
             var edge = [];
             var dataset = {};
 
-            var  _dict = {id:0,name:term,group:0}
+            var  _dict = {id:0,name:term,group:0};
             node.push(_dict);
             for(i in headers) {
+                var c = ++i
 
-                node.push({id: 1, name: headers[i], group: "1"})
-                edge.push({relation:"Defined in",source: 0, target: 1,"group":1})
+                node.push({id:c, name: headers[--i], group: "1"})
+                edge.push({relation:"Defined in",source: 0, target: c,"group":1})
             }
             dataset.nodes = node;
             dataset.edges = edge;
-            jQuery("#container").removeAttr("hidden");
+            console.log(dataset)
             showGraph(dataset)
-
 
 
             })

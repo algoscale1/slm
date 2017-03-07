@@ -65,18 +65,7 @@ def get_answers(request):
         terms_list.append(GraphDb.get_terms_db(heading))
     heading_with_answers['terms'] = terms_list
 
-    print("dict of result", heading_with_answers)
 
-    #
-    # heading_with_answers = {"headings":['Form 51-102F6 Statement of Executive Compensation'
-    #                                     ],
-    #                         "answers":["ceo cfo plan share-based award hu is pal yaha"]}
-    # terms_list = []
-    # for heading in heading_with_answers['headings']:
-    #     heading = repr(str(heading))
-    #     terms_list.append(GraphDb.get_terms_db(heading))
-    # heading_with_answers['terms'] = terms_list
-    # print("dict of result", heading_with_answers)
     return HttpResponse(json.dumps(heading_with_answers))
 
 

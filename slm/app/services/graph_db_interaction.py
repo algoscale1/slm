@@ -34,5 +34,11 @@ class GraphDb:
         headers= []
         for record in result:
               headers.append(record[0])
+              print(record[0],"sssssssssssssssssssssssssssss")
 
         return list(set(headers))
+
+    @staticmethod
+    def dele():
+        result = session.run("MATCH (n) DETACH DELETE n")
+        print("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
